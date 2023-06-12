@@ -3,12 +3,24 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://import.superbrugsen.coop.dk.localhost/",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:42577",
       "sslPort": 44363
     }
   },
   "profiles": {
+    "IIS": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "http://import.superbrugsen.coop.dk.localhost/",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
@@ -23,7 +35,7 @@
       "applicationUrl": "https://localhost:44363;http://localhost:42577",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }      
+      }
     }
   }
 }
