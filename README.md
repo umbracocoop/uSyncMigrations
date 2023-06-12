@@ -104,3 +104,27 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 > **Note**
 > 
 > I eksport gemmer den alle stier til mediefilerne, så man kan copy/paste ”media”-mappen over i det nye projekt eller lave en virtuel mappe, for ikke at have dobbelt op på billederne.
+
+# Import
+
+## Opsæt migration projekt
+
+1. Clone https://github.com/umbracocoop/uSyncMigrations/ ned
+1. Skift til `coop/migration` branchen
+1. Opret ny branch til dit projekt og kald den `coop/[superbrugsen]`
+1. import database `coop-[superbrugsen]-import` fra en af `coop-default-import` backup filerne i bilagsmappen
+1. Ret connection string i \uSyncMigrationSite\appsettings.json
+1. Opret website på IIS’en
+   1. Website name ` [coop.dk.superbrugsen.import] `
+   1. Domæne ` [import.superbrugsen.coop.dk].localhost`
+   1. Physical path skal pege ind i `\uSyncMigrationSite`
+1. Ret `\uSyncMigrationSite\Properties\launchSettings.json` til med ovenstående domæne to steder
+1. Run `uSyncMigrationSite` projektet med `IIS` indstillingen
+   1. Bemærk at du fra nu af bare kan køre domænet i browseren uden nødvendigvis at run’e den først.
+1. Nu kommer du til Umbraco login skærmbilledet. Log ind med:
+   1. Email: admin@co3.dk
+   1. Password: 1234567890
+1. Nu kommer du ind i Umbraco og er klar til næste del af opgaven
+
+
+
