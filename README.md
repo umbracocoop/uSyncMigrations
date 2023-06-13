@@ -104,3 +104,84 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 > **Note**
 > 
 > I eksport gemmer den alle stier til mediefilerne, så man kan copy/paste ”media”-mappen over i det nye projekt eller lave en virtuel mappe, for ikke at have dobbelt op på billederne.
+
+# Import
+
+## Opsæt migration projekt
+
+1. Clone https://github.com/umbracocoop/uSyncMigrations/ ned
+1. Skift til `coop/migration` branchen
+1. Opret ny branch til dit projekt og kald den `coop/[superbrugsen]`
+1. import database `coop-[superbrugsen]-import` fra en af `coop-default-import` backup filerne i bilagsmappen
+1. Ret connection string i \uSyncMigrationSite\appsettings.json
+1. Opret website på IIS’en
+   1. Website name ` [coop.dk.superbrugsen.import] `
+   1. Domæne ` [import.superbrugsen.coop.dk].localhost`
+   1. Physical path skal pege ind i `\uSyncMigrationSite`
+1. Ret `\uSyncMigrationSite\Properties\launchSettings.json` til med ovenstående domæne to steder
+1. Run `uSyncMigrationSite` projektet med `IIS` indstillingen
+   1. Bemærk at du fra nu af bare kan køre domænet i browseren uden nødvendigvis at run’e den først.
+1. Nu kommer du til Umbraco login skærmbilledet. Log ind med:
+   1. Email: admin@co3.dk
+   1. Password: 1234567890
+1. Nu kommer du ind i Umbraco og er klar til næste del af opgaven
+
+## Klargør import
+1. Kopier de eksporterede filer til `\uSyncMigrationSite\uSync\[super-brugsen]`
+1. Gå nu i Umbraco og åben Settings > uSync Migrations
+1. Start ny migration ved at trykke ”Select Source”
+1. Skriv ”[Super Brugsen]” i Migration name
+1. Vælg din `\uSyncMigrationSite\uSync\[super-brugsen]` mappe under uSync Source
+1. Tryk ”Submit”
+1. Nu kører den første tjek af og convertering af filerne og viser dig hvilke datatyper der mangler converters
+   1. Bemærk at man senere kan køre en ny convertion ved at trykke ”Run conversion again” under en valgt migrering
+
+## Validation results
+
+Første gang man laver en migration i uSync skriver den en Validation result rapport ud. Efterfølgende kan man se den ved at trykke ”Validation results” oppe under ”Edit” knappen under den migration man har åbnet.
+
+Validation results består typisk af en række passed elementer og så eventuelt nogle Warnings. Warnings vil så typisk være på Data typer der mangler migrators. Disse migrators skal laves før uSync kan finde ud af at flytte de pågældende data. Den skal simpelthen vide hvordan den skal flytte settings og content for den pågældende data type. Mere om det længere nede.
+
+## Hvordan fungerer uSync Migration?
+
+Filerne fra Umbraco 7 ligger jo nu I en bestemt struktur i `\uSyncMigrationSite\uSync\[super-brugsen]` mappen. Når man kører en convertion loades alle filerne ind og uSync migration koden kører dem alle igennem. Projektet har en lang rækker Migrators, som er kode der skal til for at flytte Settings og Content for en specifik DataType. Læs mere om dem længere nede.
+
+Når uSync migrations har kørt alle filerne igennem har den genereret en ny bunke filer med converterede data til hvad end man har været i gang med at konvertere. Disse filer ender i en mappe her `\uSyncMigrationSite\uSync\Migrations\`.
+
+Hver gang man ændrer noget i migration koden skal man køre en ny Convertion, før man kan prøve at importere igen.
+
+## Custom migrators
+
+Custom migrators skal til for custom property editors. For at det vil virke skal følgende være i orden.
+
+1. Minimum alle package.manifest filer tilhørende property editorerne i `App_Plugins` mappen skal med over i `\uSyncMigrationSite\App_Plugins\`. 
+   1. Ellers findes editorerne ikke når de skal tilføjes til en data type
+   2. Resten af filerne skal med, så man kan se om de virker. Der har været ændringer i brugen af Angular frameworket, så der vil i nogle tilfælde skulle justeres lidt i javascriptet.
+3. Editorerne skal alle have en tilhørende Migrator. Se masser eksempler under `\uSync.Migrations\Migrators`
+
+En migrator består af følgende overordnede dele.
+
+1. `SyncMigrator` attribute - Står for at fortælle hvad editor alias denne migrator fungerer til
+2. `GetEditorAlias()` - Står for at fortælle hvilken
+3. `GetConfigValues()` - Står for at oversætte Data typens settings fra ny til gammel
+4. `GetContentValue()` - Står for at overstætte Data types content data fra ny til gammel
+
+> **Note**
+> 
+> De nævnte metoder kan overrides efter behov. Hvis ikke man overrider dem vil data bare blive flyttet en til en.
+
+## Import Settings
+
+Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTypes.
+
+1. Kør en Settings import ved at trykke på den grønne knap
+1. Nu importerer den alt fra den seneste konvertering
+1. Den vil så komme med advarsler, hvis der er noget der ikke kom med over
+
+> **Warning**
+> 
+> De datatyper der ikke har migrators vil ikke blive flyttet. Deres data vil blive flyttet over som et Label i stedet.
+> Til gengæld kan man uden problemer køre en ny import efter man har kørt en ny Convertion. 
+> Dog kan importen IKKE finde ud af at ændre editor på allerede oprettede data typer. Slet derfor label data typen før man forsøger at importere den igen.
+
+
