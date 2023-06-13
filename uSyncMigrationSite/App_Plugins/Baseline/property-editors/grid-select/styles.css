@@ -1,0 +1,5 @@
+﻿.grid-select-row { list-style: none; padding: 0; margin: 0; overflow: hidden; clear: both; }
+.grid-select-row li { cursor: pointer; margin: 0 2px 2px 0; width: 10%; float: left; background-color: #d9d9d9; max-width: 35px; }
+.grid-select-row li span { padding-bottom: 100%; display: block; }
+.grid-select-row li.selected { background-color: #808080; }
+.grid-select { overflow: hidden; }

@@ -1,0 +1,5 @@
+﻿<div ng-controller="Baseline.textstring-with-counter.controller" class="textstring-with-counter">
+  <input class="umb-editor" type="text" maxlength="{{model.config.maxlength}}" ng-model="model.value" ng-change="inputchanged()" ng-show="!model.config.textarea" />
+  <textarea class="umb-editor" maxlength="{{model.config.maxlength}}" ng-model="model.value" ng-change="inputchanged()" ng-show="model.config.textarea"></textarea>
+  <div ng-class="{'counter':true, 'max-reached' : model.config.characterLimit < model.value.length }">Characters: {{count}}<span ng-show="model.config.characterLimit > 0 && model.config.enforceCharacterLimit">/{{model.config.characterLimit}}</span></div>
+</div>

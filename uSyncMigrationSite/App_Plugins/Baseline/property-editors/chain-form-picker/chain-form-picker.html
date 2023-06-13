@@ -1,0 +1,8 @@
+﻿<div class="chain-form-picker sc-row" ng-controller="Baseline.ChainFormPicker">
+  <ul>
+    <li ng-repeat="item in forms">
+      <div class="chain-name" ng-show="forms.length > 1">{{item.Name}}</div>
+      <umb-editor model="item.FormPicker"></umb-editor>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,4 @@
+﻿.chain-form-picker .chain-name { display: block; margin-bottom: 3px; }
+.chain-form-picker ul { list-style: none; margin: 0; }
+.chain-form-picker ul li { padding: 15px 0; border-top: 1px solid #f3f3f5; }
+.chain-form-picker ul li:first-child { border-top: none; }

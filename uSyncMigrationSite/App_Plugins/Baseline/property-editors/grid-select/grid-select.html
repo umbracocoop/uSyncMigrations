@@ -1,0 +1,7 @@
+﻿<div class="grid-select" ng-controller="Baseline.grid-select.controller">
+  <ul class="grid-select-row" ng-repeat="row in rows">
+    <li ng-repeat="column in row.columns" ng-click="select(column)" title="{{column.text}}" ng-class="{'selected': column.selected}">
+      <span></span>
+    </li>
+  </ul>
+</div>

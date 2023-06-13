@@ -1,0 +1,165 @@
+﻿{
+  "propertyEditors": [
+    {
+      "alias": "Baseline.ChainFormPicker",
+      "name": "Baseline: Chain form picker",
+      "editor": {
+        "view": "~/App_Plugins/Baseline/property-editors/chain-form-picker/chain-form-picker.html",
+        "hideLabel": false,
+        "valueType": "JSON"
+      }
+    },
+    {
+      "alias": "Baseline.ChainCatalogPage",
+      "name": "Baseline: Chain Catalog Page",
+      "editor": {
+        "view": "~/App_Plugins/Baseline/property-editors/chain-catalog-page/chain-catalog-page.html",
+        "hideLabel": false,
+        "valueType": "JSON"
+      }
+    },
+    {
+      "alias": "Baseline.GenerateGuid",
+      "name": "Baseline: Generate guid",
+      "editor": {
+        "view": "~/App_Plugins/Baseline/property-editors/generate-guid/generate-guid.html",
+        "hideLabel": true,
+        "valueType": "JSON"
+      }
+    },
+    {
+      "alias": "baseline.content-relations.controller",
+      "name": "Baseline: Content relations",
+      "editor": {
+        "view": "~/App_Plugins/baseline/property-editors/content-relations/content-relations.html",
+        "hideLabel": false,
+        "valueType": "JSON"
+      }
+    },
+    {
+      "alias": "Baseline.CacheManagement",
+      "name": "TeaSolutions: Cache management",
+      "editor": {
+        "view": "~/App_Plugins/Baseline/dashboard-plugins/cache-management/cache-management.html",
+        "hideLabel": true,
+        "valueType": "JSON"
+      }
+    },
+    {
+      "alias": "Baseline.textstring-with-counter.controller",
+      "name": "Baseline: Textstring with counter",
+      "editor": {
+        "view": "~/App_Plugins/Baseline/property-editors/textstring-with-counter/textstring-with-counter.html",
+        "hideLabel": false,
+        "valueType": "STRING"
+      },
+      "prevalues": {
+        "fields": [
+          {
+            "label": "Character limit",
+            "description": "The maximum number of characters",
+            "key": "characterLimit",
+            "view": "number"
+          },
+          {
+            "label": "Enforce character limit",
+            "description": "This will make sure there will be entered only as many characters as the limit",
+            "key": "enforceCharacterLimit",
+            "view": "boolean"
+          },
+          {
+            "label": "Textarea",
+            "description": "Make the field a textarea instead of a single line textstring",
+            "key": "textarea",
+            "view": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "alias": "Baseline.vote-result.controller",
+      "name": "Baseline: Vote result",
+      "editor": {
+        "view": "~/App_Plugins/Baseline/property-editors/vote-result/vote-result.html",
+        "hideLabel": false,
+        "valueType": "STRING"
+      }
+    },
+    {
+      "alias": "Baseline.GridSelect",
+      "name": "Baseline: Grid select",
+      "editor": {
+        "view": "~/App_Plugins/Baseline/property-editors/grid-select/grid-select.html",
+        "hideLabel": false,
+        "valueType": "JSON"
+      },
+      "defaultConfig": {
+        "rows": [
+          {
+            "columns": [
+              {
+                "text": "Left top",
+                "value": "left top"
+              },
+              {
+                "text": "Center top",
+                "value": "center top"
+              },
+              {
+                "text": "Right top",
+                "value": "right top"
+              }
+            ]
+          },
+          {
+            "columns": [
+              {
+                "text": "Left center",
+                "value": "left center"
+              },
+              {
+                "text": "Center center",
+                "value": "center center"
+              },
+              {
+                "text": "Right center",
+                "value": "right center"
+              }
+            ]
+          },
+          {
+            "columns": [
+              {
+                "text": "Left bottom",
+                "value": "left bottom"
+              },
+              {
+                "text": "Center bottom",
+                "value": "center bottom"
+              },
+              {
+                "text": "Right bottom",
+                "value": "right bottom"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "css": [
+    "~/App_Plugins/Baseline/backoffice-customization/backoffice-customization.css"
+  ],
+  "javascript": [
+    "~/App_Plugins/Baseline/resources/content.resource.js",
+    "~/App_Plugins/Baseline/backoffice-customization/backoffice-customization.js",
+    "~/App_Plugins/Baseline/dashboard-plugins/cache-management/cache-management.controller.js",
+    "~/App_Plugins/Baseline/property-editors/generate-guid/generate-guid.controller.js",
+    "~/App_Plugins/Baseline/property-editors/grid-select/grid-select.controller.js",
+    "~/App_Plugins/Baseline/property-editors/content-relations/content-relations.controller.js",
+    "~/App_Plugins/Baseline/property-editors/textstring-with-counter/textstring-with-counter.controller.js",
+    "~/App_Plugins/Baseline/property-editors/chain-form-picker/chain-form-picker.controller.js",
+    "~/App_Plugins/Baseline/property-editors/chain-catalog-page/chain-catalog-page.controller.js",
+    "~/App_Plugins/Baseline/property-editors/vote-result/vote-result.controller.js"
+  ]
+}

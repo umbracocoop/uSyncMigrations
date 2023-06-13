@@ -1,0 +1,4 @@
+﻿.chain-catalog-page .chain-name { display: block; margin-bottom: 3px; }
+.chain-catalog-page ul { list-style: none; margin: 0; }
+.chain-catalog-page ul li { padding: 15px 0; border-top: 1px solid #f3f3f5; }
+.chain-catalog-pager ul li:first-child { border-top: none; }

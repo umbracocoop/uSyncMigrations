@@ -1,0 +1,16 @@
+﻿{
+  "icon": "icon-folder",
+  "root": "uSync\\Migrate\\super-brugsen",
+  "id": "super-brugsen",
+  "version": 7,
+  "name": "Super Brugsen",
+  "source": "uSync/super-brugsen",
+  "siteFolder": null,
+  "target": "uSync/Migrations/20230612_125625",
+  "migrated": true,
+  "importStatus": {
+    "Settings": true,
+    "Content": true
+  },
+  "plan": "UpgradeUmbracoSevenPlan"
+}
