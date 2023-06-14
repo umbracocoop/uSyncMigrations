@@ -184,4 +184,8 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 > Til gengæld kan man uden problemer køre en ny import efter man har kørt en ny Convertion. 
 > Dog kan importen IKKE finde ud af at ændre editor på allerede oprettede data typer. Slet derfor label data typen før man forsøger at importere den igen.
 
+## Media
+- Det er kun nødvendigt at importere media én gang (Med mindre man opdager at noget er galt)
+- Når man ikke længere ønsker at importere media længere, kan man omnavngive `\uSyncMigrationSite\uSync\super-brugsen\media` mappen, så den ikke bliver taget med hver gang
+- Vil man se at filerne også virker kan man downloade media-mappen fra original-sitet og lægge den ind i `\uSyncMigrationSite\wwwroot\`
 
