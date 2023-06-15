@@ -10,8 +10,26 @@
 	  <EmbeddedResource Remove="uSync\**" />
 	  <None Remove="uSync\**" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="App_Plugins\Baseline\backoffice-customization\backoffice-customization.css" />
+	  <Content Include="App_Plugins\Baseline\property-editors\chain-catalog-page\chain-catalog-page.html" />
+	  <Content Include="App_Plugins\Baseline\property-editors\chain-catalog-page\styles.css" />
+	  <Content Include="App_Plugins\Baseline\property-editors\chain-form-picker\chain-form-picker.html" />
+	  <Content Include="App_Plugins\Baseline\property-editors\chain-form-picker\styles.css" />
+	  <Content Include="App_Plugins\Baseline\property-editors\content-relations\content-relations.html" />
+	  <Content Include="App_Plugins\Baseline\property-editors\content-relations\styles.css" />
+	  <Content Include="App_Plugins\Baseline\property-editors\generate-guid\generate-guid.html" />
+	  <Content Include="App_Plugins\Baseline\property-editors\generate-guid\styles.css" />
+	  <Content Include="App_Plugins\Baseline\property-editors\grid-select\grid-select.html" />
+	  <Content Include="App_Plugins\Baseline\property-editors\grid-select\styles.css" />
+	  <Content Include="App_Plugins\Baseline\property-editors\textstring-with-counter\styles.css" />
+	  <Content Include="App_Plugins\Baseline\property-editors\textstring-with-counter\textstring-with-counter.html" />
+	  <Content Include="App_Plugins\Baseline\property-editors\vote-result\styles.css" />
+	  <Content Include="App_Plugins\Baseline\property-editors\vote-result\vote-result.html" />
+	</ItemGroup>
 	
 	<ItemGroup>
+		<PackageReference Include="Skybrud.Umbraco.Redirects" Version="4.0.12" />
 		<PackageReference Include="Umbraco.Cms" Version="10.4.0" />
 		<PackageReference Include="Umbraco.TheStarterKit" Version="10.0.0" />
 		<PackageReference Include="uSync" Version="10.3.3" />
@@ -28,6 +46,21 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\MacroPartials\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="App_Plugins\Baseline\backoffice-customization\backoffice-customization.js" />
+	  <None Include="App_Plugins\Baseline\package.manifest" />
+	  <None Include="App_Plugins\Baseline\property-editors\chain-catalog-page\chain-catalog-page.controller.js" />
+	  <None Include="App_Plugins\Baseline\property-editors\chain-form-picker\chain-form-picker.controller.js" />
+	  <None Include="App_Plugins\Baseline\property-editors\content-relations\content-relations.controller.js" />
+	  <None Include="App_Plugins\Baseline\property-editors\generate-guid\generate-guid.controller.js" />
+	  <None Include="App_Plugins\Baseline\property-editors\grid-select\grid-select.controller.js" />
+	  <None Include="App_Plugins\Baseline\property-editors\textstring-with-counter\textstring-with-counter.controller.js" />
+	  <None Include="App_Plugins\Baseline\property-editors\vote-result\vote-result.controller.js" />
+	  <None Include="App_Plugins\Baseline\resources\content.resource.js" />
+	  <None Include="App_Plugins\BlockListCustomViews\default-view.html" />
+	  <None Include="App_Plugins\BlockListCustomViews\ribbonText.html" />
 	</ItemGroup>
 
 	<PropertyGroup>
