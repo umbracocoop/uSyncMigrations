@@ -37,15 +37,6 @@
       }
     },
     {
-      "alias": "Baseline.CacheManagement",
-      "name": "TeaSolutions: Cache management",
-      "editor": {
-        "view": "~/App_Plugins/Baseline/dashboard-plugins/cache-management/cache-management.html",
-        "hideLabel": true,
-        "valueType": "JSON"
-      }
-    },
-    {
       "alias": "Baseline.textstring-with-counter.controller",
       "name": "Baseline: Textstring with counter",
       "editor": {
@@ -153,7 +144,6 @@
   "javascript": [
     "~/App_Plugins/Baseline/resources/content.resource.js",
     "~/App_Plugins/Baseline/backoffice-customization/backoffice-customization.js",
-    "~/App_Plugins/Baseline/dashboard-plugins/cache-management/cache-management.controller.js",
     "~/App_Plugins/Baseline/property-editors/generate-guid/generate-guid.controller.js",
     "~/App_Plugins/Baseline/property-editors/grid-select/grid-select.controller.js",
     "~/App_Plugins/Baseline/property-editors/content-relations/content-relations.controller.js",
