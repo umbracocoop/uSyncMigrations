@@ -189,3 +189,34 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 - Når man ikke længere ønsker at importere media længere, kan man omnavngive `\uSyncMigrationSite\uSync\super-brugsen\media` mappen, så den ikke bliver taget med hver gang
 - Vil man se at filerne også virker kan man downloade media-mappen fra original-sitet og lægge den ind i `\uSyncMigrationSite\wwwroot\`
 
+## Custom tabeller
+### Url Tracker
+1. Kør denne på den gamle DB:
+     ```sql
+     SELECT
+     [icUrlTracker].RedirectNodeId AS Id,
+     COALESCE([OldUrl], '') AS [Url], -- Map [RedirectUrl] from icUrlTracker to [Url] in SkybrudRedirects
+     COALESCE([OldUrlQueryString], '') AS [QueryString], -- Map [OldUrlQueryString] from icUrlTracker to [QueryString] in SkybrudRedirects
+     umbracoNode.uniqueID AS [DestinationKey], -- Generate a new uniqueidentifier for [DestinationKey]
+     COALESCE([RedirectUrl], '') AS [DestinationUrl], -- Map [RedirectUrl] from icUrlTracker to [DestinationUrl] in SkybrudRedirects
+     Inserted AS [Created], -- Use the current date/time for [Created]
+     RedirectPassThroughQueryString AS [ForwardQueryString] -- Specify a value for [ForwardQueryString]
+     FROM [dbo].[icUrlTracker]
+     INNER JOIN umbracoNode ON umbracoNode.id = [icUrlTracker].RedirectNodeId;
+     ```
+2. Gem resultatet som csv ved at højreklikke på resultattabelen og vælge ”Save result as”.
+3. Læg filen i mappen `\uSyncMigrationSite\UrlRedirect\ExportData`
+4. Bemærk at næste step bare tager den første den bedste fil i mappen og forsøger at importere den.
+5. Kør nu `/umbraco/api/ImportUrlTrackerData/Run`, hvorefter url’erne bliver importeret.
+
+### Vote options
+Tabellerne ` VoteOptions_Group` og ` VoteOptions_Vote` bliver oprettet automatisk i databasen af Migration-projektet. Du skal derfor bare kopiere data fra den gamle db, til den nye.
+
+1.	Lav en select der vælger alle rows
+2.	Marker alle rows
+3.	ctrl + c
+4.	Edit den samme tabel i den nye database
+5.	Sæt markøren i den første række
+6.	ctrl + v
+7.	Hvis der er bøvl med primary key, så slå den midlertiddigt fra
+
