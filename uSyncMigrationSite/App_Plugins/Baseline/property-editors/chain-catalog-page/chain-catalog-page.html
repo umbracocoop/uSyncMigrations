@@ -1,0 +1,9 @@
+﻿<div class="chain-catalog-page sc-row" ng-controller="Baseline.ChainCatalogPage">
+  <ul>
+    <li ng-repeat="item in scopeChains">
+      <div class="chain-name" ng-show="scopeChains.length > 1">{{item.RetailGroupName}}</div>
+      <input type="hidden" class="retail-group" value=""/>
+      <input type="number" placeholder="Side i avisen" min="1" ng-model="item.Value" />
+    </li>
+  </ul>
+</div>

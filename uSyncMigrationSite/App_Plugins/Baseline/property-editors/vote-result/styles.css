@@ -1,0 +1,12 @@
+﻿.vote-result {
+  max-width: 200px;
+}
+
+  .vote-result .option {
+    display: flex;
+    justify-content: space-between;
+  }
+
+    .vote-result .option:nth-child(2n+1) {
+      background: #eee;
+    }

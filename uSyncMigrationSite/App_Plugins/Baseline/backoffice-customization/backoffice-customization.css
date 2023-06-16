@@ -1,0 +1,30 @@
+﻿.umb-overlay.umb-overlay-right { width: 50% !important; min-width: 500px !important; left: auto !important; right: 0; }
+
+.stack__preview--default { padding: 0 !important; min-height: 80px; }
+.stack__preview--default .preview { padding: 15px; }
+.stack__preview--default p { margin-bottom: 0; }
+.stack__preview--default .ribbon-type { text-align: center; font-size: 14px; background: #f3f1f1; padding: 5px; display: block; }
+.stack__preview--default .ribbon-type.partial-available { background: #ffe65f; }
+.stack__preview--default .ribbon-type.unavailable { background: #c31414; color: #fff; }
+.stack__preview--default .ribbon-type.unavailable i { color: #fff; }
+
+.stack__preview--default .ribbon-type i { line-height: 14px; font-size: 14px; color: #000; margin-right: 3px; }
+
+.stack__preview--default .two-columns { display: flex; justify-content: center; flex-wrap: wrap; }
+.stack__preview--default .two-columns.reverse { flex-direction: row-reverse; }
+.stack__preview--default .two-columns .column { flex-grow: 1; flex-basis: 0; min-width: 35%; max-width: 35%; }
+
+.stack__preview--default .two-columns.align-content { align-items: center; }
+
+ul.color-picker li { width: 110px; min-height: 100px; }
+
+.stack__preview-wrapper .manual-styles { margin-top: 15px; background: #ffffff; padding: 15px; width: 100%; box-sizing: border-box; text-align: left; }
+.stack__preview-wrapper .manual-styles .manual-style { margin-top: 10px; }
+.stack__preview-wrapper .manual-styles h3 { font-size: 17px; }
+.stack__preview-wrapper .manual-styles h4 { font-size: 14px; font-weight: bold; }
+
+.baseline-block-element { background-color: #fff; border: 1px solid #e9e9eb; margin-bottom: 4px; margin-top: 4px; padding: 0 20px; border-radius: 3px; color: #1b264f; cursor: pointer; position: relative; -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+.baseline-block-element:hover { background-color: #f9f9fa; color: #2152a3; }
+.baseline-block-element-headline { align-items: center; display: flex; min-height: 48px; }
+.baseline-block-element-headline > .icon { display: inline-block; font-size: 22px; margin-right: 10px; }
+.baseline-block-element-pre { cursor: auto; -webkit-user-select: text; -moz-user-select: text; user-select: text; }

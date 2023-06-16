@@ -1,0 +1,10 @@
+﻿<div ng-controller="baseline.content-relations.controller">
+  <ul class="relation-list" ng-show="relations.length>0">
+    <li ng-repeat="relation in relations" title="{{relation.Name}}">
+      <a href="{{relation.BackOfficeUrl}}">{{relation.Name}} <span>({{relation.DocumentTypeAlias}}<span ng-show="relation.Url"> - {{relation.Url}}</span>)</span></a>
+    </li>
+  </ul>
+  <p ng-show="relations.length===0">
+    This item is not used anywhere
+  </p>
+</div>
