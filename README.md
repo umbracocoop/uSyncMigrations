@@ -220,3 +220,13 @@ Tabellerne ` VoteOptions_Group` og ` VoteOptions_Vote` bliver oprettet automatis
 6.	ctrl + v
 7.	Hvis der er bøvl med primary key, så slå den midlertiddigt fra
 
+## Umbraco Forms
+
+VI FLYTTER DEM BARE MANUELT. Dette kan først gøres i selve Cloud projektet, så lav flueben til det i Clickup, så du kan gøre det senere.
+
+1. Opret den nye formular
+2. Umbraco cloud laver nu en .uda fil med formularen. Gem den fil et andet sted.
+3. Overskriv dens Guid, i .uda filen, med gamle guid
+4. Slet formularen i Umbraco
+5. Indsæt .uda filen igen
+6. Kør echo deploy
