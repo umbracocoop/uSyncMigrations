@@ -6,7 +6,7 @@
   "name": "Super Brugsen",
   "source": "uSync/super-brugsen",
   "siteFolder": null,
-  "target": "uSync/Migrations/20230612_125625",
+  "target": "uSync/Migrations/super-brugsen-converted",
   "migrated": true,
   "importStatus": {
     "Settings": true,
