@@ -1,0 +1,10 @@
+<section id="ribbonText" ng-click="block.edit()">
+  <div class="content baseline-block-element">
+    <div class="baseline-block-element-headline">
+      <umb-icon icon="{{block.content.icon}}" class="icon"></umb-icon>
+      <span>{{block.label}}</span>
+    </div>
+    <p style="cursor:pointer;text-decoration:underline;margin-top:15px;" ng-click="showJson=!showJson; $event.stopPropagation();">Vis json:</p>
+    <pre class="baseline-block-element-pre" ng-show="showJson" ng-click="$event.stopPropagation();">{{ block.data | json }}</pre>
+  </div>
+</section>
