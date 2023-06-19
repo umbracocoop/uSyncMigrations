@@ -62,12 +62,12 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 ## Installer uSync
 
 1. Opret ny branch ”migration-export”
-1. Installer uSync https://www.nuget.org/packages/uSync/4.0.16/
-1. Installer uSync Content edition https://www.nuget.org/packages/uSync.ContentEdition/4.1.9.1/
-1. Build projektet
-1. Kopier usync mapperne fra \Website\App_Plugins til \Website\wwwroot\App_Plugins
-1. Kopier usync config filerne fra \Website\Config til \Website\wwwroot\Config
-1. Kopier de to .config filer fra bilagsmappen ved denne guide til /Website/wwwroot/Config/ 
+1. ~~Installer uSync https://www.nuget.org/packages/uSync/4.0.16/~~
+1. ~~Installer uSync Content edition https://www.nuget.org/packages/uSync.ContentEdition/4.1.9.1/~~
+1. ~~Build projektet~~
+1. ~~Kopier usync mapperne fra \Website\App_Plugins til \Website\wwwroot\App_Plugins~~
+1. ~~Kopier usync config filerne fra \Website\Config til \Website\wwwroot\Config~~
+1. Kopier nyeste version af filerne i `uSync lib` fra bilagsmappen ved denne guide til /Website/wwwroot/Config/ 
 1. I Dashboard.config skal du nu tilføje
      ```xml
      <section alias="usyncBackOffice">
