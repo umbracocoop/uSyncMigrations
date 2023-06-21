@@ -82,8 +82,8 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
      ```
 9. Nu skal du måske genstarte sitet
 10. Reload derefter Umbraco Backoffice og gå ind på Developer sektionen, hvor der nu er en ”uSync BackOffice” fane
-11. Commit nu dine ændringer til ”migration-export” branchen
-    1. BEMÆRK: Der ligger nogle gange en spøgelsesfil uden navn. Den skal bare have lov til at være der. Slet den ikke.
+11. ~~Commit nu dine ændringer til ”migration-export” branchen~~
+    1. ~~BEMÆRK: Der ligger nogle gange en spøgelsesfil uden navn. Den skal bare have lov til at være der. Slet den ikke.~~
 12. Åben nu Umbraco Cloud git repository i Fork eller hvad du bruger: \Website\wwwroot\
 13. Der vil være en række filer der skal comittes:
     1. Opret en ”migration-export” branch
