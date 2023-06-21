@@ -17,6 +17,7 @@ Sørg for at du har:
 1. Du har installeret .NET 4.8
 1. Du har installeret .NET 6
 1. Du har installeret IIS
+1. Tjek at du har adgang til Bilag-mappen på OneDrive: `\twoday\CO3-C - Documents\_Co3\Umbraco\Migration 7 to X\Bilag`
 
 # Eksport det gamle Umbraco 7 projekt
 
