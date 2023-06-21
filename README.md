@@ -116,8 +116,8 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 1. import database `coop-[superbrugsen]-import` fra en af `coop-default-import` backup filerne i bilagsmappen
 1. Ret connection string i \uSyncMigrationSite\appsettings.json
 1. Opret website på IIS’en
-   1. Website name ` [coop.dk.superbrugsen.import] `
-   1. Domæne ` [import.superbrugsen.coop.dk].localhost`
+   1. Website name ` [coop.dk.import] `
+   1. Domæne ` [import.coop.dk].localhost`
    1. Physical path skal pege ind i `\uSyncMigrationSite`
 1. Ret `\uSyncMigrationSite\Properties\launchSettings.json` til med ovenstående domæne to steder
 1. Run `uSyncMigrationSite` projektet med `IIS` indstillingen
