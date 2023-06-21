@@ -158,7 +158,7 @@ Custom migrators skal til for custom property editors. For at det vil virke skal
 1. Minimum alle package.manifest filer tilhørende property editorerne i `App_Plugins` mappen skal med over i `\uSyncMigrationSite\App_Plugins\`. 
    1. Ellers findes editorerne ikke når de skal tilføjes til en data type
    2. Resten af filerne skal med, så man kan se om de virker. Der har været ændringer i brugen af Angular frameworket, så der vil i nogle tilfælde skulle justeres lidt i javascriptet.
-3. Editorerne skal alle have en tilhørende Migrator. Se masser eksempler under `\uSync.Migrations\Migrators`
+3. Editorerne skal alle have en tilhørende Migrator. Se masser eksempler under `\uSync.Migrations\Migrators`. Custom editors skal under mappen `\uSync.Migrations\Migrators\Coop`
 
 En migrator består af følgende overordnede dele.
 
