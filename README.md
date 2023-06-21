@@ -190,6 +190,9 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 - Når man ikke længere ønsker at importere media længere, kan man omnavngive `\uSyncMigrationSite\uSync\super-brugsen\media` mappen, så den ikke bliver taget med hver gang
 - Vil man se at filerne også virker kan man downloade media-mappen fra original-sitet og lægge den ind i `\uSyncMigrationSite\wwwroot\`
 
+##  Templates
+- Kopier templates view-filer over manuelt INDEN ud kører de to imports. Hvis de er kørt, så kan de bare køres igen. 
+
 ## Custom tabeller
 ### Url Tracker
 1. Kør denne på den gamle DB:
