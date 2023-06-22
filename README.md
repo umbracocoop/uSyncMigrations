@@ -180,6 +180,10 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 - Når man ikke længere ønsker at importere media længere, kan man omnavngive `\uSyncMigrationSite\uSync\super-brugsen\media` mappen, så den ikke bliver taget med hver gang
 - Vil man se at filerne også virker kan man downloade media-mappen fra original-sitet og lægge den ind i `\uSyncMigrationSite\wwwroot\`
 
+> **Note**
+> 
+> Virtual directory virker ikke med ImageSharp, så man skal have billeder i projektmappen
+
 ## Custom tabeller
 ### Url Tracker
 1. Kør denne på den gamle DB:
