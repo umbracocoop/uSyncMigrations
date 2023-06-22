@@ -158,6 +158,9 @@ En migrator består af følgende overordnede dele.
 > 
 > De nævnte metoder kan overrides efter behov. Hvis ikke man overrider dem vil data bare blive flyttet en til en.
 
+##  Templates
+- Kopier templates view-filer over manuelt INDEN ud kører de to imports. Hvis de er kørt, så kan de bare køres igen.
+
 ## Import Settings
 
 Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTypes.
@@ -176,9 +179,6 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 - Det er kun nødvendigt at importere media én gang (Med mindre man opdager at noget er galt)
 - Når man ikke længere ønsker at importere media længere, kan man omnavngive `\uSyncMigrationSite\uSync\super-brugsen\media` mappen, så den ikke bliver taget med hver gang
 - Vil man se at filerne også virker kan man downloade media-mappen fra original-sitet og lægge den ind i `\uSyncMigrationSite\wwwroot\`
-
-##  Templates
-- Kopier templates view-filer over manuelt INDEN ud kører de to imports. Hvis de er kørt, så kan de bare køres igen. 
 
 ## Custom tabeller
 ### Url Tracker
