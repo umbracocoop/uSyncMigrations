@@ -1,3 +1,13 @@
+# Knowledge
+
+## Tech lead
+- Rune Grønkjær (rune.gronkjar@co3.dk)
+- Rasmus Pedersen (rasmus.pedersen@co3.dk)
+  
+## Umbraco Cloud
+- Rasmus Pedersen (rasmus.pedersen@co3.dk)
+- Camilla Skibsted (camilla.skibsted@co3.dk)
+
 # Inden opstart
 
 ## Adgange
