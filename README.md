@@ -1,9 +1,3 @@
-# uSync Migrations
-
-uSync Migrations is a tool to help you migrate your site settings and content from Umbraco 7.x to the latest and greatest versions of Umbraco.
-
-![](/assets/Screenshots/dashboard.png)
-
 # Inden opstart
 
 ## Adgange
@@ -117,7 +111,7 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 1. Ret connection string i \uSyncMigrationSite\appsettings.json
 1. Opret website på IIS’en
    1. Website name ` [coop.dk.import] `
-   1. Domæne ` [import.coop.dk].localhost`
+   1. Domæne `import.coop.dk.localhost`
    1. Physical path skal pege ind i `\uSyncMigrationSite`
 1. Ret `\uSyncMigrationSite\Properties\launchSettings.json` til med ovenstående domæne to steder
 1. Run `uSyncMigrationSite` projektet med `IIS` indstillingen
