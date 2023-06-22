@@ -209,6 +209,8 @@ VI FLYTTER DEM BARE MANUELT. Dette kan først gøres i selve Cloud projektet, s�
 4. Åben nu `src\UmbracoProject\umbraco\Deploy` i cmd og kør `echo > deploy-export`
 5. Nu opretter projektet uda-filer for alle Settings
 6. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
+   1. (beskriv hvordan man kører echo > deploy i Kudu/backoffice)
+7. Nu skal du transfer content fra local til live (beskriv)
 
 > **Note**
 > 
