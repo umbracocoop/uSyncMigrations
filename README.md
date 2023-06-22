@@ -223,7 +223,7 @@ VI FLYTTER DEM BARE MANUELT. Dette kan først gøres i selve Cloud projektet, s�
 
 ## Importer data i Cloud sitet
 
-1. Clon det tomme Umbraco Cloud site ned
+1. Klon det tomme Umbraco Cloud site ned
 2. Overfør alt i `\Baseline files\` fra bilagsmappen til dit cloud site
 3. Skift connection string i appsettings.Development.json ved at tilføje dette
      ```json
@@ -232,11 +232,14 @@ VI FLYTTER DEM BARE MANUELT. Dette kan først gøres i selve Cloud projektet, s�
        "umbracoDbDSN_ProviderName": "Microsoft.Data.SqlClient"
      }
      ```
-4. Åben nu `src\UmbracoProject\umbraco\Deploy` i cmd og kør `echo > deploy-export`
-5. Nu opretter projektet uda-filer for alle Settings
-6. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
-   1. (beskriv hvordan man kører echo > deploy i Kudu/backoffice)
-7. Nu skal du transfer content fra local til live (beskriv)
+4. Åben nu backoffice og gå til Settings > Deploy
+5. Tryk på 'Export Schema' (Den vil teknisk kører command: `echo > deploy-export`)
+6. Nu opretter projektet uda-filer for alle Settings
+7. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
+8. Nu skal du transfer content fra local til live
+   1. Højre klik på 'Content' og vælg 'Queue for transfer'
+   2. Start overførelsen og hvis den fejler, så følg fejlbeskeden.
+   3. Rinse and repeat
 
 > **Note**
 > 
