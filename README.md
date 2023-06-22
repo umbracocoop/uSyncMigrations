@@ -57,11 +57,6 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 ## Installer uSync
 
 1. Opret ny branch ”migration-export”
-1. ~~Installer uSync https://www.nuget.org/packages/uSync/4.0.16/~~
-1. ~~Installer uSync Content edition https://www.nuget.org/packages/uSync.ContentEdition/4.1.9.1/~~
-1. ~~Build projektet~~
-1. ~~Kopier usync mapperne fra \Website\App_Plugins til \Website\wwwroot\App_Plugins~~
-1. ~~Kopier usync config filerne fra \Website\Config til \Website\wwwroot\Config~~
 1. Kopier nyeste version af filerne i `uSync lib` fra bilagsmappen ved denne guide til /Website/wwwroot/Config/ 
 1. I Dashboard.config skal du nu tilføje
      ```xml
@@ -74,12 +69,10 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
      </tab>
      </section>
      ```
-9. Nu skal du måske genstarte sitet
-10. Reload derefter Umbraco Backoffice og gå ind på Developer sektionen, hvor der nu er en ”uSync BackOffice” fane
-11. ~~Commit nu dine ændringer til ”migration-export” branchen~~
-    1. ~~BEMÆRK: Der ligger nogle gange en spøgelsesfil uden navn. Den skal bare have lov til at være der. Slet den ikke.~~
-12. Åben nu Umbraco Cloud git repository i Fork eller hvad du bruger: \Website\wwwroot\
-13. Der vil være en række filer der skal comittes:
+4. Nu skal du måske genstarte sitet
+5. Reload derefter Umbraco Backoffice og gå ind på Developer sektionen, hvor der nu er en ”uSync BackOffice” fane
+6. Åben nu Umbraco Cloud git repository i Fork eller hvad du bruger: \Website\wwwroot\
+7. Der vil være en række filer der skal comittes:
     1. Opret en ”migration-export” branch
     1. Commit nu alt andet end:
        1. Web.config
@@ -88,7 +81,7 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 ## Eksporter indholdet
 
 Faktisk eksporterer uSync nok alle filer ved genstart/opstart af sitet.
-Filerne ender her\Website\wwwroot\uSync\data
+Filerne ender her \Website\wwwroot\uSync\data
 
 Hvis ikke den har eksporteret filerne:
 
@@ -122,7 +115,7 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 1. Nu kommer du ind i Umbraco og er klar til næste del af opgaven
 
 ## Klargør import
-1. Kopier de eksporterede filer til `\uSyncMigrationSite\uSync\[super-brugsen]`
+1. Kopier de eksporterede filer i `\Website\wwwroot\uSync\data` til `\uSyncMigrationSite\uSync\[super-brugsen]`
 1. Gå nu i Umbraco og åben Settings > uSync Migrations
 1. Start ny migration ved at trykke ”Select Source”
 1. Skriv ”[Super Brugsen]” i Migration name
