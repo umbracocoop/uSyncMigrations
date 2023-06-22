@@ -191,11 +191,24 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 ## Media
 - Det er kun nødvendigt at importere media én gang (Med mindre man opdager at noget er galt)
 - Når man ikke længere ønsker at importere media længere, kan man omnavngive `\uSyncMigrationSite\uSync\super-brugsen\media` mappen, så den ikke bliver taget med hver gang
-- Vil man se at filerne også virker kan man downloade media-mappen fra original-sitet og lægge den ind i `\uSyncMigrationSite\wwwroot\`
+- Vil man se at filerne også virker kan man downloade media-mappen fra original-sitet via Azure Storage Explorer (se opsætning nedenfor) og lægge den ind i `\uSyncMigrationSite\wwwroot\`
 
 > **Warning**
 > 
 > Virtual directory virker ikke med ImageSharp, så man skal have billeder i projektmappen
+
+### Opsætning af Azure Storage Explorer
+1. Installer Azure Storage Explorer https://go.microsoft.com/fwlink/?linkid=2216182&clcid=0x409
+2. Klik på 'Open Connect dialog'
+3. Vælg 'Blob container'
+4. Vælg 'Shared access signature URL (SAS)'
+5. Åbn Umbraco.io og gå til det gamle projekt
+6. Under 'Settings' skal du vælge 'Connection details'
+7. Scroll ned til 'Blob Storage Connection Details'
+8. Kopier tekst fra 'Shared access signature URL (SAS)' fra LIVE miljøet
+9. Paste det ind i 'Blob container SAS URL' i Azure Storage Explorer
+10. I 'Display name' vil du overskrive Guid med følgende navngivning: [projekt navn] - LIVE. Fx. coop-base-daglibrugsen - LIVE
+11. Connect og du er kørende
 
 ## Umbraco Forms
 
