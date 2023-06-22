@@ -91,7 +91,7 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
        1. Web.config
        1. /usync/  Hvis den allerede er blevet oprettet pga. en eksport
 
-## Eksporter indholdet
+## Eksporter indholdet - hvis man skal lave yderligere eksport
 
 Faktisk eksporterer uSync nok alle filer ved genstart/opstart af sitet.
 Filerne ender her \Website\wwwroot\uSync\data
