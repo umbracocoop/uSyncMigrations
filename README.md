@@ -184,6 +184,36 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 > 
 > Virtual directory virker ikke med ImageSharp, så man skal have billeder i projektmappen
 
+## Umbraco Forms
+
+VI FLYTTER DEM BARE MANUELT. Dette kan først gøres i selve Cloud projektet, så lav flueben til det i Clickup, så du kan gøre det senere.
+
+1. Opret den nye formular
+2. Umbraco cloud laver nu en .uda fil med formularen. Gem den fil et andet sted.
+3. Overskriv dens Guid, i .uda filen, med gamle guid
+4. Slet formularen i Umbraco
+5. Indsæt .uda filen igen
+6. Kør echo deploy
+
+## Importer data i Cloud sitet
+
+1. Clon det tomme Umbraco Cloud site ned
+2. Overfør alt i `\Baseline files\` fra bilagsmappen til dit cloud site
+3. Skift connection string i appsettings.Development.json ved at tilføje dette
+     ```json
+    "ConnectionStrings": {
+       "umbracoDbDSN": "Server=.\\SQL_DEV;Database=coop-superbrugsen-import;User Id=sa;Password=itsteatime-",
+       "umbracoDbDSN_ProviderName": "Microsoft.Data.SqlClient"
+     }
+     ```
+4. Åben nu `src\UmbracoProject\umbraco\Deploy` i cmd og kør `echo > deploy-export`
+5. Nu opretter projektet uda-filer for alle Settings
+6. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
+
+> **Note**
+> 
+> **Uda filer** er Umbraco deploys måde at flytte Settings mellem environments. De committes til repo og bliver så automatisk importeret når de deployes til et nyt environment.
+
 ## Custom tabeller
 ### Url Tracker
 1. Kør denne på den gamle DB:
@@ -214,33 +244,3 @@ Tabellerne ` VoteOptions_Group` og ` VoteOptions_Vote` bliver oprettet automatis
 5.	Sæt markøren i den første række
 6.	ctrl + v
 7.	Hvis der er bøvl med primary key, så slå den midlertiddigt fra
-
-## Umbraco Forms
-
-VI FLYTTER DEM BARE MANUELT. Dette kan først gøres i selve Cloud projektet, så lav flueben til det i Clickup, så du kan gøre det senere.
-
-1. Opret den nye formular
-2. Umbraco cloud laver nu en .uda fil med formularen. Gem den fil et andet sted.
-3. Overskriv dens Guid, i .uda filen, med gamle guid
-4. Slet formularen i Umbraco
-5. Indsæt .uda filen igen
-6. Kør echo deploy
-
-## Importer data i Cloud sitet
-
-1. Clon det tomme Umbraco Cloud site ned
-2. Overfør alt i `\Baseline files\` fra bilagsmappen til dit cloud site
-3. Skift connection string i appsettings.Development.json ved at tilføje dette
-     ```json
-    "ConnectionStrings": {
-       "umbracoDbDSN": "Server=.\\SQL_DEV;Database=coop-superbrugsen-import;User Id=sa;Password=itsteatime-",
-       "umbracoDbDSN_ProviderName": "Microsoft.Data.SqlClient"
-     }
-     ```
-4. Åben nu `src\UmbracoProject\umbraco\Deploy` i cmd og kør `echo > deploy-export`
-5. Nu opretter projektet uda-filer for alle Settings
-6. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
-
-> **Note**
-> 
-> **Uda filer** er Umbraco deploys måde at flytte Settings mellem environments. De committes til repo og bliver så automatisk importeret når de deployes til et nyt environment.
