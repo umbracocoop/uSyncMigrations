@@ -237,6 +237,7 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 11. Tilføj en https binding.
     - Under `SSL certificate` vælges der `IIS Express Development Certificate`.
     - Under `Type` vælges der `https`
+12. Kør projektet via VS.
 4. Åben nu backoffice og gå til Settings > Deploy
 5. Tryk på 'Export Schema' (Den vil teknisk kører command: `echo > deploy-export`)
 6. Nu opretter projektet uda-filer for alle Settings
