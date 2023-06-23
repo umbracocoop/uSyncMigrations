@@ -237,6 +237,8 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 11. Tilføj en https binding.
     - Under `SSL certificate` vælges der `IIS Express Development Certificate`.
     - Under `Type` vælges der `https`
+
+11. Åben projekt mappen på din disk. Åben `.umbraco`-filen, og ændre med navnet fra `.sln`.
 12. Kør projektet via VS.
 4. Åben nu backoffice og gå til Settings > Deploy. Du logger ind med samme bruger som på Import-projektet.
 5. Tryk på 'Export Schema' (Den vil teknisk kører command: `echo > deploy-export`)
