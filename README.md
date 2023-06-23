@@ -197,6 +197,26 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 > 
 > Virtual directory virker ikke med ImageSharp, så man skal have billeder i projektmappen
 
+## Importer data i Cloud sitet
+
+1. Klon det tomme Umbraco Cloud site ned
+2. Overfør alt i `\Baseline files\` fra bilagsmappen til dit cloud site
+3. Skift connection string i appsettings.Development.json ved at tilføje dette
+     ```json
+    "ConnectionStrings": {
+       "umbracoDbDSN": "Server=.\\SQL_DEV;Database=coop-superbrugsen-import;User Id=sa;Password=itsteatime-",
+       "umbracoDbDSN_ProviderName": "Microsoft.Data.SqlClient"
+     }
+     ```
+4. Åben nu backoffice og gå til Settings > Deploy
+5. Tryk på 'Export Schema' (Den vil teknisk kører command: `echo > deploy-export`)
+6. Nu opretter projektet uda-filer for alle Settings
+7. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
+8. Nu skal du transfer content fra local til live
+   1. Højre klik på 'Content' og vælg 'Queue for transfer'
+   2. Start overførelsen og hvis den fejler, så følg fejlbeskeden.
+   3. Rinse and repeat
+
 ### Opsætning af Azure Storage Explorer
 1. Installer Azure Storage Explorer https://go.microsoft.com/fwlink/?linkid=2216182&clcid=0x409
 2. Klik på 'Open Connect dialog'
@@ -220,26 +240,6 @@ VI FLYTTER DEM BARE MANUELT. Dette kan først gøres i selve Cloud projektet, s�
 4. Slet formularen i Umbraco
 5. Indsæt .uda filen igen
 6. Kør echo deploy
-
-## Importer data i Cloud sitet
-
-1. Klon det tomme Umbraco Cloud site ned
-2. Overfør alt i `\Baseline files\` fra bilagsmappen til dit cloud site
-3. Skift connection string i appsettings.Development.json ved at tilføje dette
-     ```json
-    "ConnectionStrings": {
-       "umbracoDbDSN": "Server=.\\SQL_DEV;Database=coop-superbrugsen-import;User Id=sa;Password=itsteatime-",
-       "umbracoDbDSN_ProviderName": "Microsoft.Data.SqlClient"
-     }
-     ```
-4. Åben nu backoffice og gå til Settings > Deploy
-5. Tryk på 'Export Schema' (Den vil teknisk kører command: `echo > deploy-export`)
-6. Nu opretter projektet uda-filer for alle Settings
-7. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
-8. Nu skal du transfer content fra local til live
-   1. Højre klik på 'Content' og vælg 'Queue for transfer'
-   2. Start overførelsen og hvis den fejler, så følg fejlbeskeden.
-   3. Rinse and repeat
 
 > **Note**
 > 
