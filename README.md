@@ -208,6 +208,35 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
        "umbracoDbDSN_ProviderName": "Microsoft.Data.SqlClient"
      }
      ```
+4. Omnavngiv projektmappen under `src` fra `UmbracoProject` til `Website`.
+5. Omnavngiv projektfilen (.csproj)    fra `UmbracoProject` til `Website`. Den er under mappen fra step 4.
+6. Åben projektet i VS2022
+7. Gem din .sln-fil - giv den et navn, der matcher fra Umbraco.io. Husk `.sln`-bagefter.
+8. Åben `Properties\launchSettings.json`
+9. Tilføj følgende under `iisSettings`. Husk at opdatere `applicationUrl` - den skal være med https.
+     ```json
+      "iis": {
+        "applicationUrl": "https://skolekontakten.dk.coop.new.localhost/",
+        "sslPort": 0
+    },
+     ```
+9. Tilføj følgende under `profiles`. Husk at opdatere `launchUrl` - den skal være med https.
+
+     ```json 
+        "IIS": {
+        "commandName": "IIS",
+        "launchBrowser": true,
+        "launchUrl": "https://skolekontakten.dk.coop.new.localhost/",
+        "environmentVariables": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+      },
+   ```
+
+10. Opsæt sitet på din IIS med et passende domæne. Start med en normal http binding.
+11. Tilføj en https binding.
+    - Under `SSL certificate` vælges der `IIS Express Development Certificate`.
+    - Under `Type` vælges der `https`
 4. Åben nu backoffice og gå til Settings > Deploy
 5. Tryk på 'Export Schema' (Den vil teknisk kører command: `echo > deploy-export`)
 6. Nu opretter projektet uda-filer for alle Settings
@@ -216,6 +245,10 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
    1. Højre klik på 'Content' og vælg 'Queue for transfer'
    2. Start overførelsen og hvis den fejler, så følg fejlbeskeden.
    3. Rinse and repeat
+
+### Next step
+1. Flyt C# kode
+2. Flyt styles, script, frontend m.m. Husk evt. Task Runner
 
 ### Opsætning af Azure Storage Explorer
 1. Installer Azure Storage Explorer https://go.microsoft.com/fwlink/?linkid=2216182&clcid=0x409
