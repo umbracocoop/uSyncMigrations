@@ -77,7 +77,7 @@ public class NestedToBlockListMigrator : SyncPropertyMigratorBase {
     if ( nestedConfig.ContentTypes != null ) {
       var blocks = new List<BlockListConfiguration.BlockConfiguration>();
       foreach ( NestedContentConfiguration.ContentType block in nestedConfig.ContentTypes ) {
-        if ( string.IsNullOrWhiteSpace( block.Alias ) ) continue;
+        if ( string.IsNullOrWhiteSpace( block.Alias ) || block.Alias == "UmbProductListPage" ) continue;
 
         Guid contentTypeKey = context.ContentTypes.GetKeyByAlias( block.Alias );
 
@@ -86,8 +86,7 @@ public class NestedToBlockListMigrator : SyncPropertyMigratorBase {
 
         blocks.Add( new BlockListConfiguration.BlockConfiguration {
           ContentElementTypeKey = contentTypeKey,
-          Label = block.Template,
-          View = BaselineHelper.GetBlockListCustomView( context, contentTypeKey, _webHostEnvironment ),
+          Label = block.Template
         } );
       }
 

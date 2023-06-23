@@ -1,0 +1,76 @@
+<div ng-controller="Custom.SchoolRegistrations" class="container-registrations">
+
+  <div class="search-box">
+    <label for="txSearch">Search:</label>
+    <input id="txSearch" type="text" ng-model="filterOptions.filterText" no-Dirty-Check />
+  </div>
+  <br />
+  <hr />
+
+  <div>
+    <div class="gridStyle" ng-grid="gridOptions" ui-grid-auto-resize></div>
+  </div>
+
+  <div class="row grid-controls">
+    <div class="col-xs-9" style="float:left;width:70%">
+      <a href="/umbraco/surface/schools/exportexcel" class="btn" target="_blank">Export excel</a>
+      <a href="/umbraco/surface/schools/exportcsv" class="btn" target="_blank">Export csv</a>
+      <button class="btn btn-red" type="button" ng-click="truncateTable()">Remove all registrations</button>
+    </div>
+    <div class="col-xs-3" style="float:left;width:30%">
+      <button class="btn {{isOriginalDirty ? 'btn-green' : 'btn-gray'}} btn-save" type="button" ng-disabled="!isOriginalDirty" ng-click="saveChanges()">Save changed registrations</button>
+    </div>
+  </div>
+  <div id="dvStatus" ng-show="status" class="{{status.cssClass}}">{{status.message}}</div>
+
+  <div class="row grid-controls">
+    <fieldset>
+      <legend>
+        Bulk actions
+      </legend>
+      <div class="col-xs-6" style="float:left;width:50%">
+        <label for="">Send pickup notification emails for week:</label>
+        <select name="weekNr" ng-model="pickupNotificationTask.weekNumber" class="drp-week">
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+        </select>
+
+      </div>
+      <div class="col-xs-6" style="float:left;width:49%" ng-hide="runningTasksCount">
+        Test with email: <input type="email" ng-model="pickupNotificationTask.testEmail" placeholder="Email address that exists in the list" style="width:350px"/>
+        <button class="btn btn-save {{runningTasksCount == 0 ? 'btn-green' : 'btn-gray'}}" type="button" ng-hide="runningTasksCount" ng-click="startTaskPickupNotifications(false)">Send test email</button>
+        <hr/>
+        <button class="btn btn-save {{runningTasksCount == 0 ? 'btn-green' : 'btn-gray'}}" type="button" ng-hide="runningTasksCount" ng-click="startTaskPickupNotifications(true)">Send email to all for week {{pickupNotificationTask.weekNumber}}</button>
+        
+      </div>
+      <div class="col-xs-6" style="float:left;width:49%" ng-hide="!runningTask">
+        <span><img src="/images/ajax_loader_small.gif" /> Running task: [{{runningTask.Description}}] - {{runningTask.Status}}</span>
+      </div>
+</fieldset>    
+  </div>
+  <div class="row grid-controls">
+    <hr/>
+    <div class="col-xl-12">
+      <h4>Finished tasks</h4>
+      <ul>
+        <li ng-repeat="task in tasksHistory | filter: endTimeNotNull">Id: {{task.Id}} - {{formatDate(task.StartTime) | date:'yyyy-MM-dd HH:mm'}} - {{formatDate(task.EndTime) | date:'yyyy-MM-dd HH:mm'}}: {{task.Description}} - Status: {{task.Status}} </li>        
+      </ul>
+    </div>
+
+    <div class="col-xs-12">
+      <h4>Unfinished Tasks</h4>
+      <ul>
+        <li ng-repeat="task in tasksHistory | filter: endTimeNull">Id: {{task.Id}} - {{formatDate(task.StartTime) | date:'yyyy-MM-dd HH:mm'}}: {{task.Description}} - Status: {{task.Status}}
+          <button class="btn btn-resume btn-green" type="button" ng-click="resumeTaskPickupNotifications(task.Id)">Resume </button>
+          <button class="btn btn-remove btn-green" type="button" ng-click="removeTaskPickupNotifications(task.Id)">Remove </button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  
+
+  <umb-hide-edit-buttons></umb-hide-edit-buttons>
+</div>

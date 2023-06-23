@@ -1,15 +1,15 @@
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<dynamic>
+﻿@inherits UmbracoViewPage<dynamic>
 
-@if (Model?.value is not null)
+@if (Model.value != null)
 {
     string macroAlias = Model.value.macroAlias.ToString();
-    var parameters = new Dictionary<string,object>();
-    foreach (var mpd in Model.value.macroParamsDictionary)
+    ViewDataDictionary parameters = new ViewDataDictionary();
+    foreach (dynamic mpd in Model.value.macroParamsDictionary)
     {
         parameters.Add(mpd.Name, mpd.Value);
     }
 
     <text>
-        @await Umbraco.RenderMacroAsync(macroAlias, parameters)
+        @Umbraco.RenderMacro(macroAlias, parameters)
     </text>
 }

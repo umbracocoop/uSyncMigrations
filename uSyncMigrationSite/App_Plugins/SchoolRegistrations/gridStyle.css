@@ -1,0 +1,56 @@
+/*style.css*/
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%; 
+    height: 600px
+}
+
+.gridStyle .list-url{
+    width:40%;
+}
+.form-add .input {
+    width:96%;
+}
+.container-registrations .search-box{
+    width:100%;
+    float:left;
+    margin-bottom:5px;
+    display:block;
+}
+
+.container-registrations{
+    margin-left:-190px;
+}
+
+.container-registrations i.icon-delete{
+    color:#9d261d!important;
+    font-size:18px;
+}
+.btn-save{
+    float:right;
+}
+.btn-gray{
+    background-color:gray;
+    color:white;
+}
+.btn-green{
+    background-color:green;
+    color:white;
+}
+.grid-controls{
+    margin:10px 0px 10px 0px;
+}
+.ngFooterTotalItems span{
+    margin-left:3px;
+}
+.btn-resume{
+    height:30px;
+}
+.drp-week{
+    width:60px;
+}
+
+.btn-red {
+    background-color:red;
+    color:white;
+}

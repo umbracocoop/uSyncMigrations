@@ -1,0 +1,17 @@
+{    	
+	propertyEditors: [		
+		{			
+			alias: "pagecomments",
+			name: "Page Comments",
+			editor: {
+				view: "~/App_Plugins/pagecomments/views/pagecomments.html",
+				valueType: "JSON"	
+			},
+		}
+	],
+	javascript:
+    [
+        "~/App_Plugins/pagecomments/js/controller.js",
+        "~/App_Plugins/pagecomments/js/resource.js"
+    ]
+}  

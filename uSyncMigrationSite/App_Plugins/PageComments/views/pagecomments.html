@@ -1,0 +1,68 @@
+﻿<link href="/App_Plugins/pagecomments/css/dashboard.css" rel="stylesheet" />
+<script src="/App_Plugins/pagecomments/js/controller.js"></script>
+<div ng-controller="PageCommentsController"> 
+    <div class="panel-heading">
+        <button type="button" class="btn btn-success" ng-click="checkSelected()" ng-disabled="countChecked() == 0">Approve and publish selected</button>
+        <button type="button" class="btn btn-success" ng-click="chkdelSelected()" ng-disabled="countChecked() == 0">Delete seleted</button>
+    </div>
+    <div class="panel panel-default comments_dashboard">
+        <!-- Default panel contents -->
+            <!-- Table -->
+            <table class="table  table-striped">
+                <thead>
+                    <tr><th><input type="checkbox" ng-click="checkAll()" ng-model="selectedAll" ></th> <th>Page/Post Name</th> <th>Name</th> <th>Email</th><th>Comment</th> </tr>
+                </thead>
+                <tbody>
+                    <!-- Display all the comments to approve -->
+                    <tr ng-repeat="commentData in commentDatas">
+                        <td><input type="checkbox" name="approve_cmt" id="{{commentData.Id}}" ng-checked="master" ng-model="commentData.selected" /></td>
+                        <td>{{ commentData.PageName }}</td>
+                        <td>{{ commentData.Name }}</td>
+                        <td>{{ commentData.Email }}</td>
+                        <td><div class="trim-info" >{{commentData.Comment}} </div><a data-toggle="modal" data-target="#{{commentData.Id}}modal" ng-show="commentData.Comment.length >=20 ">Read More</a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="{{commentData.Id}}modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                                            
+                                        </div>
+                                        <div class="modal-body">
+                                            {{commentData.Comment}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal ends-->
+                        
+                        </td>
+                        
+                    </tr>
+
+                </tbody>               
+            </table>        
+        </div>  
+          
+        <div>
+
+
+             <div class="umb-pane lbl-left">
+                <umb-control-group ng-repeat="setting in settings" label="{{ setting.Label }}" description="{{ setting.Description }}">
+                    <input type="text" name="{{ setting.Key }}" id="{{ setting.Key }}" value="{{ setting.Value }}" ng-model="setting.Value" />
+                </umb-control-group>
+            </div>
+
+            <div class="umb-tab-buttons lbl-left">
+                <div class="btn-group">
+                    <button ng-click="save(settings)" data-hotkey="ctrl+s" class="btn btn-success">
+                        <localize key="buttons_save">Save</localize>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
