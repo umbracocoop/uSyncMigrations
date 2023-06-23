@@ -238,11 +238,12 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
     - Under `SSL certificate` vælges der `IIS Express Development Certificate`.
     - Under `Type` vælges der `https`
 12. Kør projektet via VS.
-4. Åben nu backoffice og gå til Settings > Deploy
+4. Åben nu backoffice og gå til Settings > Deploy. Du logger ind med samme bruger som på Import-projektet.
 5. Tryk på 'Export Schema' (Den vil teknisk kører command: `echo > deploy-export`)
 6. Nu opretter projektet uda-filer for alle Settings
-7. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
-8. Nu skal du transfer content fra local til live
+7. Tjek at alt er som det skal være under Document Types, Data Types og at der er Content.
+8. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
+9. Nu skal du transfer content fra local til live
    1. Højre klik på 'Content' og vælg 'Queue for transfer'
    2. Start overførelsen og hvis den fejler, så følg fejlbeskeden.
    3. Rinse and repeat
