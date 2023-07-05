@@ -266,6 +266,9 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 9. Paste det ind i 'Blob container SAS URL' i Azure Storage Explorer
 10. I 'Display name' vil du overskrive Guid med følgende navngivning: [projekt navn] - LIVE. Fx. coop-base-daglibrugsen - LIVE
 11. Connect og du er kørende
+12. Download "media" og indsæt det i din folder lokalt. Tjek at media virker.
+13. Connect op til ASE mod de nye live data
+14. Upload billederne, og tjek at de er kommet op på (det nye) live. 
 
 ## Umbraco Forms
 
