@@ -69,8 +69,9 @@ internal abstract class SharedContentTypeBaseHandler<TEntity> : SharedHandlerBas
             }
             else
             {
-                context.ContentTypes.AddProperty(contentTypeAlias, alias,
-                    editorAlias, context.DataTypes.GetByDefinition(definition)?.EditorAlias);
+
+        context.ContentTypes.AddProperty(contentTypeAlias, alias,
+                    editorAlias, context.DataTypes.GetByDefinition( definition )?.EditorAlias );
 
                 context.ContentTypes.AddDataTypeAlias(contentTypeAlias, alias,
                     context.DataTypes.GetAlias(definition));
@@ -224,7 +225,23 @@ internal abstract class SharedContentTypeBaseHandler<TEntity> : SharedHandlerBas
 
         if (definition != Guid.Empty)
         {
-            definitionElement.Value = context.DataTypes.GetReplacement(definition).ToString();
+      Guid? dataTypeDefinition = default;
+      if ( alias.Equals( "Image" ) ) {
+        switch ( propertyAlias ) {
+          //case "":
+          //  dataTypeDefinition = Guid.Parse( "8F1EF1E1-9DE4-40D3-A072-6673F631CA64" );//Label (decimal)
+          //  break;
+          case "umbracoWidth":
+          case "umbracoHeight":
+            dataTypeDefinition = Guid.Parse( "8E7F995C-BD81-4627-9932-C40E568EC788" );//Label (Integer)
+            break;
+          case "umbracoBytes":
+            dataTypeDefinition = Guid.Parse( "930861BF-E262-4EAD-A704-F99453565708" );//Label (BigInt)
+            break;
+
+        }
+      }
+      definitionElement.Value = dataTypeDefinition != null ? dataTypeDefinition.Value.ToString() : context.DataTypes.GetReplacement(definition).ToString();
             variationValue = context.DataTypes.GetVariation(definition);
         }
 
