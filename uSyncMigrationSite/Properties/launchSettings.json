@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://import.superbrugsen.coop.dk.localhost/",
+      "applicationUrl": "http://import.coop.dk.localhost/",
       "sslPort": 0
     },
     "iisExpress": {
@@ -16,7 +16,7 @@
     "IIS": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "http://import.superbrugsen.coop.dk.localhost/",
+      "launchUrl": "http://import.coop.dk.localhost/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

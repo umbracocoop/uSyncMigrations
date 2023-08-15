@@ -197,7 +197,7 @@ internal class SyncMigrationService : ISyncMigrationService
         {
             context.AddBlocked(nameof(MediaType), UmbConstants.Conventions.MediaTypes.File);
             context.AddBlocked(nameof(MediaType), UmbConstants.Conventions.MediaTypes.Folder);
-            context.AddBlocked(nameof(MediaType), UmbConstants.Conventions.MediaTypes.Image);
+            //context.AddBlocked(nameof(MediaType), UmbConstants.Conventions.MediaTypes.Image);
         }
 
         // items that we block by type and alias 
