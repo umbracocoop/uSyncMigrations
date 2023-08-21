@@ -126,9 +126,9 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 1. Skift til `coop/migration` branchen
 1. Opret ny branch til dit projekt og kald den `coop/[superbrugsen]`
 1. Database
-   1.	IKKE BASELINE
+   - IKKE BASELINE
       1. Import database `coop-[superbrugsen]-import` fra en af `coop-default-import` backup filerne i bilagsmappen
-   1.	BASELINE
+   - BASELINE
       1. Lav nu en bacpac af databasen på dit nye site (Se ‘Lav en bacpac af live databasen’)
          1. Importer backpak’en i din lokale SQLEXPRESS database
       1. Ret nu login for din user
@@ -141,6 +141,8 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
             1. Key: Umbraco.Core.Upgrader.State+The-Starter-Kit
             1. Value: a2a11bdf-1a21-4ce0-9e8e-d1d040fd503a
             1. Updated: indsæt en pæn dato
+           
+         1. Hvis linjen allerede findes opdater da value.
       1. Tag nu en backup af databasen
 1. Ret connection string i \uSyncMigrationSite\appsettings.json
 1. Opret website på IIS’en. Vi bruger samme website til alle migrations
