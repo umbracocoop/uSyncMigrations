@@ -18,6 +18,7 @@ Sørg for at du har:
 1. Du har installeret Visual Studio 2022
 1. Du har installeret en SQLEXPRESS2019 (Skal bruges til de gamle Umbraco 7 databaser 🤷‍♂️)
 1. Du har installeret SSMS
+1. Du har installeret Microsoft Azure Storage Explorer
 1. Du har installeret .NET 4.8
 1. Du har installeret .NET 6
 1. Du har installeret IIS
@@ -31,7 +32,7 @@ Gå igennem følgende punkter for at eksportere data fra et eksisterende site.
 1. Gå i /Website mappen og kør UaaSClone.cmd (Dette cloner Cloud projektet ned i den korrekte struktur)
    1. Første gang skal du indtaste dine umbraco.io login oplysninger
 
-## Lav en bacpak af live databasen
+## Lav en bacpac af live databasen
 
 Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 
@@ -41,12 +42,12 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 1. Under ”SQL Connection Details”, skift over på “Live”
 1. Indtast connection detaljerne i din SQL Management Studio
    1. HUSK at du skal indtaste ”Database” informationen under advanced
-1. Gem som ”coop-[superbrugsen]-cloud.bacpak” et sted på din computer
+1. Gem som ”coop-[superbrugsen]-cloud.bacpac” et sted på din computer
    1. Bemærk at denne database kan indeholde personlige data og skal derfor slettes når du er færdig med at bruge den.
 
-## Brug bacpak filen lokalt
+## Brug bacpac filen lokalt
 
-1. Importer din bacpak filen med ”Import Data-tier Application”
+1. Importer din bacpac filen med ”Import Data-tier Application”
    1. Navngiv databasen ”coop-[superbrugsen]-cloud”
 1. Åben nu solution’en i Visual Studio 2019
 1. Åben wwwroot > Web.Config
@@ -58,8 +59,8 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 
 1. Build din solution
 1. Sæt et website op på IIS’en
-   1. Website name: [coop.dk.superbrugsen]
-   1. Domæne: [superbrugsen.coop.dk].localhost
+   1. Website name: [coop.dk.superbrugsen].v7
+   1. Domæne: v7.[superbrugsen.coop.dk].localhost
    1. Physical path skal pege ind i: \Website\wwwroot
 1. Åben nu [superbrugsen.coop.dk].localhost/umbraco/ i browseren
 1. Log ind med din umbraco.io bruger
@@ -82,10 +83,13 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
      </tab>
      </section>
      ```
-4. Nu skal du måske genstarte sitet
-5. Reload derefter Umbraco Backoffice og gå ind på Developer sektionen, hvor der nu er en ”uSync BackOffice” fane
-6. Åben nu Umbraco Cloud git repository i Fork eller hvad du bruger: \Website\wwwroot\
-7. Der vil være en række filer der skal comittes:
+1. Nu skal du måske genstarte sitet
+1. Reload derefter Umbraco Backoffice og gå ind på Developer sektionen, hvor der nu er en ”uSync BackOffice” fane
+1. Commit nu dine ændringer til ”migration-export” branchen
+    1.	!!! BEMÆRK !!!: Der ofte en spøgelsesfil uden navn. Den skal bare have lov til at være der. Slet den ikke. Hvis du gør, fjernes sikkert alt i wwwroot og du skal hente det ned igen.
+ 
+1. Åben nu Umbraco Cloud git repository i Fork eller hvad du bruger: \Website\wwwroot\
+1. Der vil være en række filer der skal comittes:
     1. Opret en ”migration-export” branch
     1. Commit nu alt andet end:
        1. Web.config
@@ -102,6 +106,14 @@ Hvis ikke den har eksporteret filerne:
 
 Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 
+## Clone det nye Cloud site ned
+1.	Åben ‘coop-marketing-base' på umbraco.io
+2.	Click på det lille ‘here’ link under projektnavnet
+3.	Vælg dit nye projekt og skub ændringer ud på det
+4.	Gå ind på det nye projekt i umbraco.io
+5.	Tryk på ‘live’ og ‘Clone project’
+6.	Kopier linket og clone det ned i Fork (Eller hvad du nu bruger til source control)
+
 > **Note**
 > 
 > I eksport gemmer den alle stier til mediefilerne, så man kan copy/paste ”media”-mappen over i det nye projekt eller lave en virtuel mappe, for ikke at have dobbelt op på billederne.
@@ -113,26 +125,59 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 1. Clone https://github.com/umbracocoop/uSyncMigrations/ ned
 1. Skift til `coop/migration` branchen
 1. Opret ny branch til dit projekt og kald den `coop/[superbrugsen]`
-1. import database `coop-[superbrugsen]-import` fra en af `coop-default-import` backup filerne i bilagsmappen
+1. Database
+   1.	IKKE BASELINE
+      1. Import database `coop-[superbrugsen]-import` fra en af `coop-default-import` backup filerne i bilagsmappen
+   1.	BASELINE
+      1. Lav nu en bacpac af databasen på dit nye site (Se ‘Lav en bacpac af live databasen’)
+         1. Importer backpak’en i din lokale SQLEXPRESS database
+      1. Ret nu login for din user
+         1.	Åben tabellen ‘umbracoUser’ i edit mode
+         1.	Din Cloud bruger burde være deri, men med et ubrugeligt password
+         1.	Kopier nu password fra en tilsvarende database, som du kender. Følgende felter skal overskrives: userPassword, passwordConfig, securityStampToken
+      1. Sørg nu for at Umbracos Starter Kit ikke bliver installeret
+         1.	Åben ‘umbracoKeyValue’ tabellen i edit mode
+         1.	Indsæt linjen:
+            1. Key: Umbraco.Core.Upgrader.State+The-Starter-Kit
+            1. Value: a2a11bdf-1a21-4ce0-9e8e-d1d040fd503a
+            1. Updated: indsæt en pæn dato
+      1. Tag nu en backup af databasen
 1. Ret connection string i \uSyncMigrationSite\appsettings.json
-1. Opret website på IIS’en
+1. Opret website på IIS’en. Vi bruger samme website til alle migrations
    1. Website name ` [coop.dk.import] `
    1. Domæne `import.coop.dk.localhost`
    1. Physical path skal pege ind i `\uSyncMigrationSite`
 1. Ret `\uSyncMigrationSite\Properties\launchSettings.json` til med ovenstående domæne to steder
 1. Run `uSyncMigrationSite` projektet med `IIS` indstillingen
    1. Bemærk at du fra nu af bare kan køre domænet i browseren uden nødvendigvis at run’e den først.
-1. Nu kommer du til Umbraco login skærmbilledet. Log ind med:
-   1. Email: admin@co3.dk
-   1. Password: 1234567890
+1. Nu kommer du til Umbraco loginskærmbilledet. Log ind med:
+   1. Email: admin@co3.dk (Eller hvilket login du tog)
+   1. Password: 1234567890 (Eller hvilket password du tog)
 1. Nu kommer du ind i Umbraco og er klar til næste del af opgaven
+1. Ret login og password på din bruger til ovenstående
+1. Tag en ny backup af databasen
+1. Du er nu klar til næste del af opgaven
+
 
 ## Klargør import
 1. Kopier de eksporterede filer i `\Website\wwwroot\uSync\data` til `\uSyncMigrationSite\uSync\[super-brugsen]`
+1. Download nu mediafilerne fra blob-storage
+   1. I umbraco.io projektet åbner du Connection Details og scroller ned til Blob Storage Connection Details
+   1. Vælg Live
+   1. Kopier url’en i Shared access signature URL (SAS)
+   1. Åben Microsoft Azure Storage Explorer
+   1. Vælg Connect to Azure Storage (Ikonet med strømstikket)
+   1. Vælg Blob Container
+   1. Vælg Shared access signature URL (SAS)
+   1. Skriv [Super Brugsen Media] i Display name
+   1. Paste din Url i Blob container SAS URL
+   1. Next
+   1. Download nu media-mappen til \uSyncMigrationSite\wwwroot\media\
 1. Gå nu i Umbraco og åben Settings > uSync Migrations
 1. Start ny migration ved at trykke ”Select Source”
 1. Skriv ”[Super Brugsen]” i Migration name
 1. Vælg din `\uSyncMigrationSite\uSync\[super-brugsen]` mappe under uSync Source
+1. Skiv ‘uSync/Migrations/om-coop’ under ‘Target Location’
 1. Tryk ”Submit”
 1. Nu kører den første tjek af og convertering af filerne og viser dig hvilke datatyper der mangler converters
    1. Bemærk at man senere kan køre en ny convertion ved at trykke ”Run conversion again” under en valgt migrering
@@ -315,3 +360,45 @@ Tabellerne ` VoteOptions_Group` og ` VoteOptions_Vote` bliver oprettet automatis
 5.	Sæt markøren i den første række
 6.	ctrl + v
 7.	Hvis der er bøvl med primary key, så slå den midlertiddigt fra
+
+# Migrering af kode
+
+## Opsæt child project fra baseline
+
+1.	Omnavngiv Visual Studio projektet til ’Coop – [Superbrugsen]’
+2.	Åbn projektet
+3.	Tilføj connection string til din import database. Fx ’"umbracoDbDSN": "Server=.\\SQLEXPRESS19;Database=coop-om-coop-import;User Id=sa;Password=itsteatime-"’
+4.	Gå eventuelt til punktet ‘Skub dine importerede data op i Cloud’
+5.	Opret et nyt ’Website.Extensions’ projekt som et ’Class Library’
+6.	Slet den ene Class.cs fil den opretter automatisk
+7.	Installer nuget pakkerne:
+a.	Umbraco.Cms.Core
+b.	Umbraco.Cms.Web.BackOffice
+c.	Umbraco.Cms.Web.Common
+d.	Umbraco.Cms.Web.Website
+8.	På ‘Website.Extensions’ opret project references til ‘Website.Baseline’ og ‘Common’
+9.	På ‘Website’ pret project references til ‘Website.Extensions’
+10.	Find eventuelle redirects i den gamle web.config og opret dem i det nye site. Bemærk at de kan være i både Web.config og Web.live.xdt.config
+11.	Kopier koden fra det gamle ’Website.Extensions’ til det nye ’Website.Extensions’
+12.	Fix det så det virker 😊
+
+# Skub dine importerede data op i Cloud
+
+Når dit nye projekt er koblet på din import-database kan du med Umbraco Deploy eksportere alle Settings til filer, som så kan comittes til Umbraco Cloud projektet.
+
+1.	Åbn ’\src\Website\umbraco\Deploy’ mappen i det nye Cloud projekt
+2.	Sørg også for at projektet kører på IIS’en
+3.	Kør ’EchoDeployExport.bat’ hvorefter der gerne skulle dukke nogen filer op og slutte med en ’deploy-complete’ fil
+4.	Tjek nu din source control for ændringer
+5.	Nu skal du have comitted de ændringer der er korrekte og fjerne dem der er forkerte. Se næste 
+6.	Når du er færdig med at fjerne de forkerte ændringer skal du nu køre en import af filerne igen. Det gør du ved at køre ’EchoDeploy.bat’ filen
+7.	Prøv derefter at køre ’EchoDeployExport.bat’ igen så du kan sikre dig at ændringerne er blevet gjort
+
+## Nogle tips til Umbraco Deploy filerne
+1. Generelt
+   1. Ændringer af databasetype skal som regel fjernes. Det har Baseline styr på
+   1. Ændringer af navne og beskrivelser skal fjernes
+   1. Der skal typisk ikke fjernes features
+   1. Nye content types der skal kunne oprettes er fint
+1. ‘Coop color picker’ (data-type__bcd43a32d8e340069e4b499b9ef75140.uda) Bare lad de ekstra farver komme med
+1. ‘Komposition – Bånd’ document-type__0a480072838543fb8d876dadd929858d.uda) Den skal ikke ændre på ‘IsElementType’
