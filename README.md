@@ -71,8 +71,8 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 > .dll'er i `uSync lib` er bygget ud fra vores fork af uSync, hvis du skal lave ændringer til den findes det her: https://github.com/umbracocoop/uSync-Legacy
 
 1. Opret ny branch ”migration-export”
-1. Kopier nyeste version af filerne i `uSync lib` fra bilagsmappen ved denne guide til /Website/
-1. I /Website/Config/Dashboard.config skal du nu tilføje
+1. Kopier nyeste version af filerne i `uSync lib` fra bilagsmappen ved denne guide til /Website/wwwroot/
+1. I /Website/wwwroot/Config/Dashboard.config skal du nu tilføje
      ```xml
      <section alias="usyncBackOffice">
      <areas>
