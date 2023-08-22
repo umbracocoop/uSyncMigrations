@@ -1,9 +1,34 @@
+@using System.Globalization
+@using Microsoft.AspNetCore.Html
+@using Umbraco.Cms.Web.Common;
 @using Umbraco.Extensions
-@using uSyncMigrationSite
 @using Umbraco.Cms.Web.Common.PublishedModels
 @using Umbraco.Cms.Web.Common.Views
 @using Umbraco.Cms.Core.Models.PublishedContent
-@using Microsoft.AspNetCore.Html
+@using Umbraco.Cms.Core.Models;
+@using Common.Extensions;
+@using Website
+@using Website.Baseline.Media.Abstractions;
+@using Website.Baseline.Models.DocumentTypes.General;
+@using Website.Baseline.Models.DocumentTypes
+@using Website.Baseline.Ribbons.Abstractions;
+@using Website.Baseline.Ribbons.Models;
+@using Website.Baseline.Media.Models;
+@using Website.Baseline.Media.Models.Settings;
+@using Website.Baseline.Media.Enums;
+@using Website.Baseline.Media.Image;
+@using Website.Baseline.Components;
+@using Website.Baseline.CoopComponents.Abstractions;
+@using Website.Baseline.Models.Components;
+@using Website.Baseline.UIExtensions;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, Smidge
 @inject Smidge.SmidgeHelper SmidgeHelper
+@inject Website.Baseline.Services.ScriptManagementService ScriptManagementService
+@inject Website.Baseline.Services.StyleService StyleService
+@inject Website.Baseline.Services.AuthenticationService AuthenticationService
+@inject Website.Baseline.Services.HtmlService HtmlService
+@inject Website.Baseline.Services.SpeedRobotService SpeedRobotService
+@inject IMediaService MediaService
+@inject UmbracoHelper Helper
+
