@@ -57,7 +57,11 @@ public class MediaPickerMigrator : SyncPropertyMigratorBase {
         guid = udi.Guid;
       }
 
-      if ( guid.Equals( Guid.Empty ) == false ) {
+
+      //check if guid exists - if not we don't want to add it as "deleted reference" - will break transfering
+      string doesGuidExist = context.Content.GetAliasByKey( guid );
+
+      if ( !string.IsNullOrEmpty( doesGuidExist ) && guid.Equals( Guid.Empty ) == false ) {
         media.Add( new MediaWithCropsDto {
           Key = guid.Combine( contentProperty.Value.ToGuid() ), // guid.Increment(), // a hack but it means the GUID is constant between syncs.
           MediaKey = guid,
