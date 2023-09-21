@@ -121,6 +121,9 @@ public class NestedToBlockListMigrator : SyncPropertyMigratorBase {
       } );
 
       foreach ( var property in row.RawPropertyValues ) {
+        if ( property.Key == "icContentTypeAlias" ) {
+          continue;
+        }
         _logger.LogDebug( "NestedToBlockList: {ContentType} {key}", row.ContentTypeAlias, property.Key );
 
         var editorAlias = context.ContentTypes.GetEditorAliasByTypeAndProperty( row.ContentTypeAlias, property.Key );
