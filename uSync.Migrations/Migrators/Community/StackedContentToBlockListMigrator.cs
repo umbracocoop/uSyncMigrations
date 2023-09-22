@@ -98,7 +98,7 @@ public class StackedContentToBlockListMigrator : SyncPropertyMigratorBase {
         item.Values[propertyAlias] = migrator.GetContentValue( childProperty, context );
       }
 
-      item.Values = item.Values.Where( v => v.Key == "icContentTypeAlias" ).ToDictionary( v => v.Key, v => v.Value );
+      item.Values = item.Values.Where( v => v.Key != "icContentTypeAlias" ).ToDictionary( v => v.Key, v => v.Value );
 
       var block = new BlockItemData {
         ContentTypeKey = item.ContentTypeKey,
