@@ -102,7 +102,7 @@ public class StackedContentToBlockListMigrator : SyncPropertyMigratorBase {
 
       var block = new BlockItemData {
         ContentTypeKey = item.ContentTypeKey,
-        Udi = Udi.Create( UmbConstants.UdiEntityType.Element, item.Key ),
+        Udi = Udi.Create( UmbConstants.UdiEntityType.Element, Guid.NewGuid() ),
         RawPropertyValues = item.Values,
       };
 
