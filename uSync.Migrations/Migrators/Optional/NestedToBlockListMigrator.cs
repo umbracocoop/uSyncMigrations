@@ -109,7 +109,7 @@ public class NestedToBlockListMigrator : SyncPropertyMigratorBase {
 
     foreach ( var row in rowValues ) {
       var contentTypeKey = context.ContentTypes.GetKeyByAlias( row.ContentTypeAlias );
-      var blockUdi = Udi.Create( UdiEntityType.Element, row.Id );
+      var blockUdi = Udi.Create( UdiEntityType.Element, Guid.NewGuid() );
 
       var block = new BlockItemData {
         ContentTypeKey = contentTypeKey,
@@ -121,6 +121,9 @@ public class NestedToBlockListMigrator : SyncPropertyMigratorBase {
       } );
 
       foreach ( var property in row.RawPropertyValues ) {
+        if ( property.Key == "icContentTypeAlias" ) {
+          continue;
+        }
         _logger.LogDebug( "NestedToBlockList: {ContentType} {key}", row.ContentTypeAlias, property.Key );
 
         var editorAlias = context.ContentTypes.GetEditorAliasByTypeAndProperty( row.ContentTypeAlias, property.Key );

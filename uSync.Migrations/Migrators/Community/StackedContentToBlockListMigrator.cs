@@ -98,9 +98,11 @@ public class StackedContentToBlockListMigrator : SyncPropertyMigratorBase {
         item.Values[propertyAlias] = migrator.GetContentValue( childProperty, context );
       }
 
+      item.Values = item.Values.Where( v => v.Key != "icContentTypeAlias" ).ToDictionary( v => v.Key, v => v.Value );
+
       var block = new BlockItemData {
         ContentTypeKey = item.ContentTypeKey,
-        Udi = Udi.Create( UmbConstants.UdiEntityType.Element, item.Key ),
+        Udi = Udi.Create( UmbConstants.UdiEntityType.Element, Guid.NewGuid() ),
         RawPropertyValues = item.Values,
       };
 
