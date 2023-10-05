@@ -156,6 +156,7 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
    1. Email: admin@co3.dk (Eller hvilket login du tog)
    1. Password: 1234567890 (Eller hvilket password du tog)
 1. Nu kommer du ind i Umbraco og er klar til næste del af opgaven
+1. Tjek at der er intet indhold + dokumenttyperne fra databasen er i Umbraco som det eneste. 
 1. Ret login og password på din bruger til ovenstående
 1. Tag en ny backup af databasen
 1. Du er nu klar til næste del af opgaven
@@ -175,7 +176,7 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
    1. Paste din Url i Blob container SAS URL
    1. Next
    1. Download nu media-mappen til \uSyncMigrationSite\wwwroot\media\
-1. Gå nu i Umbraco og åben Settings > uSync Migrations
+1. Gå nu i Umbraco via import-projektet og åben Settings > uSync Migrations
 1. Start ny migration ved at trykke ”Select Source”
 1. Skriv ”[Super Brugsen]” i Migration name
 1. Vælg din `\uSyncMigrationSite\uSync\[super-brugsen]` mappe under uSync Source
@@ -404,3 +405,20 @@ Når dit nye projekt er koblet på din import-database kan du med Umbraco Deploy
    1. Nye content types der skal kunne oprettes er fint
 1. ‘Coop color picker’ (data-type__bcd43a32d8e340069e4b499b9ef75140.uda) Bare lad de ekstra farver komme med
 1. ‘Komposition – Bånd’ document-type__0a480072838543fb8d876dadd929858d.uda) Den skal ikke ændre på ‘IsElementType’
+
+### Umbraco deploy filer, der ikke skal med
+
+1. **Video component**:
+   1. Skal ikke have autoplay
+3. **Alt med opskrifter skal slettes**
+    1.  documentType alias: recipeKnit, documentType uda: document-type__cd4ec19885fa4c93b86ea
+    1. documentType alias: , documentType uda: document-type__4d844d911c5d4c3d8fcec5eac1cc37ae.uda
+    1. template: Baseline_RecipeList, template__21382489a07d4bc191a9441dfe22bd9e.uda
+    1. template: Baseline_RecipeKnit,template__ffddbc4fdd6748428f7fe9899fa7e545.uda
+    1. template: Baseline_RecipeIdea, template__f2d1fc142e4a4d4aa1c8b574b996207a.uda
+    1. documentType: recipeIdea: , document-type__a6887ca04e5c42d5a909522fad4491b9.uda
+4. **Embed**
+   1. ribbonEmbed, document-type__477cb5c749f2491f94863b82b77d4b06.uda
+   1. "Name": "Style - Ribbon Embed (har ikke noget alias), data-type__25100aa9695542df98fb1bcd7cf439c8.uda
+5. **Side**:
+   1. Den skal ikke indeholde reference til 4d844d911c5d4c3d8fcec5eac1cc37ae
