@@ -47,7 +47,8 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 
 ## Brug bacpac filen lokalt
 > **Note**
-> Hvis det er en frisk installation af SQL Server, så kør den her stump i en query inden import af bacpac: sp_configure 'contained database authentication', 1; GO RECONFIGURE; GO
+> Hvis det er en frisk installation af SQL Server, så kør den her stump i en query inden import af bacpac:
+> sp_configure 'contained database authentication', 1; GO RECONFIGURE; GO
 
 1. Importer din bacpac filen med ”Import Data-tier Application”
    1. Navngiv databasen ”coop-[superbrugsen]-cloud”
