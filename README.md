@@ -48,7 +48,8 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 ## Brug bacpac filen lokalt
 
 1. Importer din bacpac filen med ”Import Data-tier Application”
-   1. Navngiv databasen ”coop-[superbrugsen]-cloud”
+   1. Hvis det er en frisk installation af SQL Server, så kør den her stump i en query inden import af bacpac: sp_configure 'contained database authentication', 1; GO RECONFIGURE; GO
+   2. Navngiv databasen ”coop-[superbrugsen]-cloud”
 1. Åben nu solution’en i Visual Studio 2019
 1. Åben wwwroot > Web.Config
 1. Udkommenter linjen `<add name="umbracoDbDSN" connectionString="Data Source=|DataDirectory|\Umbraco.sdf;Flush Interval=1;" providerName="System.Data.SqlServerCe.4.0" />`
