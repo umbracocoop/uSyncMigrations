@@ -130,7 +130,7 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 1. Opret ny branch til dit projekt og kald den `coop/[superbrugsen]`
 1. Database
    - IKKE BASELINE
-      1. Import database `coop-[superbrugsen]-import` fra en af `coop-default-import` backup filerne i bilagsmappen
+      1. Import database `coop-[superbrugsen]-import` fra en bacpac af ny live projekt. Se toppen af README for guide af bacpac.
    - BASELINE
       1. Lav nu en bacpac af databasen på dit nye site (Se ‘Lav en bacpac af live databasen’)
          1. Importer backpak’en i din lokale SQLEXPRESS database
