@@ -223,7 +223,7 @@ En migrator består af følgende overordnede dele.
 > De nævnte metoder kan overrides efter behov. Hvis ikke man overrider dem vil data bare blive flyttet en til en.
 
 ##  Templates
-- Kopier templates view-filer over manuelt INDEN ud kører de to imports. Hvis de er kørt, så kan de bare køres igen.
+- Kopier templates view-filer over i dit uSync projekt manuelt INDEN du kører de to imports. Hvis de er kørt, så kan de bare køres igen.
 
 ## Import Settings
 
