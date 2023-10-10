@@ -251,7 +251,6 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 ## Importer data i Cloud sitet
 
 1. Klon det tomme Umbraco Cloud site ned
-2. Overfør alt i `\Baseline files\` fra bilagsmappen til dit cloud site. Er det IKKE et baseline-projekt skal du i stedet kopiere alt fra App_Plugins og templates. 
 3. Skift connection string i appsettings.Development.json ved at tilføje dette
      ```json
     "ConnectionStrings": {
