@@ -259,7 +259,7 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
      }
      ```
 4. Omnavngiv projektmappen under `src` fra `UmbracoProject` til `Website`.
-5. Omnavngiv projektfilen (.csproj)    fra `UmbracoProject` til `Website`. Den er under mappen fra step 4.
+5. Omnavngiv projektfilen (.csproj)    fra `UmbracoProject` til `Website`. Den er under mappen fra step 3.
 6. Åben projektet i VS2022
 7. Gem din .sln-fil - giv den et navn, der matcher fra Umbraco.io. Husk `.sln`-bagefter.
 8. Åben `Properties\launchSettings.json`
