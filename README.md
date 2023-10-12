@@ -422,24 +422,24 @@ Når dit nye projekt er koblet på din import-database kan du med Umbraco Deploy
 
 ### Umbraco deploy filer, der ikke skal med
 1. Discard:
-  2. **Video component** (d2bd65277f6847f386bc5ae8f1ce8fc8)
-  3. **Videobånd** (c4397f5b604a41758820ff1bdf1fb244)
-  4. **Chain** (bfce51fcd72c443bac5a1c4ab720672a)
-  5. **Åbningstider** (bb4579a4707345d3b3d1aa965f6725b3)
-  6. **Nyhedsbrev bånd** (697a273d62424fad859c93b1a63ce8b3)
-  7. **Grid column** (52b2905cfda84a47a5738bca3135f9d6)
-  8. **Komposition - Bånd** (0a480072838543fb8d876dadd929858d)
-  9. **Ribbon picker** (e1eaeb3937aa4812b613a14ac3c3efa1) **Kan have custom bånd, de skal ikke slettes**
-  10. **Richtext editor** (ca90c9500aff4e72b976a30b1ac57dad)
-  11. **Relations** (ad7a501cc3134f609676a56987c83937)
-  12. **Catalog page** (87383ecc0e5c41ce9dc14d9d9e080109)
-  13. **Placering - Horisontalt og vertikalt** (861a8ed71d7b479e9d260b1f8ce7ac76)
-  14. **Chain form picker** (7f0df461d09f495c9aeae658eb0cedf0)
-  15. **Tags - Product** (458f5298b78f4567b37d281f383e2788)
-  16. **Richtext editor (Simple, No formats)** (3f324bb3aedb4685a4e45ccef8971431)
-  17. **Styles - Ribbon Catalog** (19d9a3d104264c37b01423d92903c6ca)
-  18. **Generate guid** (08ad34669a8e4ded8253bc38e2662390)
-19. Slet fra database og discard
+     1. **Video component** (d2bd65277f6847f386bc5ae8f1ce8fc8)
+     2. **Videobånd** (c4397f5b604a41758820ff1bdf1fb244)
+     3. **Chain** (bfce51fcd72c443bac5a1c4ab720672a)
+     4. **Åbningstider** (bb4579a4707345d3b3d1aa965f6725b3)
+     5. **Nyhedsbrev bånd** (697a273d62424fad859c93b1a63ce8b3)
+     6. **Grid column** (52b2905cfda84a47a5738bca3135f9d6)
+     7. **Komposition - Bånd** (0a480072838543fb8d876dadd929858d)
+     8. **Ribbon picker** (e1eaeb3937aa4812b613a14ac3c3efa1) **Kan have custom bånd, de skal ikke slettes**
+     9. **Richtext editor** (ca90c9500aff4e72b976a30b1ac57dad)
+     10. **Relations** (ad7a501cc3134f609676a56987c83937)
+     11. **Catalog page** (87383ecc0e5c41ce9dc14d9d9e080109)
+     12. **Placering - Horisontalt og vertikalt** (861a8ed71d7b479e9d260b1f8ce7ac76)
+     13. **Chain form picker** (7f0df461d09f495c9aeae658eb0cedf0)
+     14. **Tags - Product** (458f5298b78f4567b37d281f383e2788)
+     15. **Richtext editor (Simple, No formats)** (3f324bb3aedb4685a4e45ccef8971431)
+     16. **Styles - Ribbon Catalog** (19d9a3d104264c37b01423d92903c6ca)
+     17. **Generate guid** (08ad34669a8e4ded8253bc38e2662390)
+20. Slet fra database og discard
     1. **Opskrifts strik** (cd4ec19885fa4c93b86eabcdeb810758)
     2. **Opskrifts idé** (a6887ca04e5c42d5a909522fad4491b9)
     3. **Logo med måned** (79c5b328b37a48ab8445f65e3ac13a5c)
@@ -453,8 +453,8 @@ Når dit nye projekt er koblet på din import-database kan du med Umbraco Deploy
     1. template: Baseline_RecipeList, template__21382489a07d4bc191a9441dfe22bd9e.uda
     1. template: Baseline_RecipeKnit,template__ffddbc4fdd6748428f7fe9899fa7e545.uda
     1. template: Baseline_RecipeIdea, template__f2d1fc142e4a4d4aa1c8b574b996207a.uda
-20. **Embed**
-   1. ribbonEmbed, document-type__477cb5c749f2491f94863b82b77d4b06.uda
-   1. "Name": "Style - Ribbon Embed (har ikke noget alias), data-type__25100aa9695542df98fb1bcd7cf439c8.uda
+21. **Embed**
+     1. ribbonEmbed, document-type__477cb5c749f2491f94863b82b77d4b06.uda
+     1. "Name": "Style - Ribbon Embed (har ikke noget alias), data-type__25100aa9695542df98fb1bcd7cf439c8.uda
 11. **Side**:
-   1. Den skal ikke indeholde reference til 4d844d911c5d4c3d8fcec5eac1cc37ae
+     1. Den skal ikke indeholde reference til 4d844d911c5d4c3d8fcec5eac1cc37ae
