@@ -293,12 +293,24 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 4. Åben nu backoffice og gå til Settings > Deploy. Du logger ind med samme bruger som på Import-projektet.
 5. Tryk på 'Export Schema' (Den vil teknisk kører command: `echo > deploy-export`)
 6. Nu opretter projektet uda-filer for alle Settings
-7. Tjek at alt er som det skal være under Document Types, Data Types og at der er Content.
-8. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
-9. Nu skal du transfer content fra local til live
+   - Der kan være rod i uda-filer på child projekter af baseline. Får du uda-filer i source control, som ikke hører til nogle af projektets custom features, skal du følge steps herunder
+   - Nogle bånd er oprettet med "ghost" dokumenttyper/datatyper, fx alias: ribbonPopup (korrekt GUID: 3da07c098ecc42d6966ce95d2821d2a1). Med "ghost" menes der dokumenttyper, som er forsøgt slettet og oprettet på ny i baseline, men content bruger stadig den slettede.
+   - Gennemgå hver enkel uda-fil. Tjek her om de allerede er identificeret: https://github.com/umbracocoop/uSyncMigrations/tree/coop/migration#nogle-tips-til-umbraco-deploy-filerne
+   - Hvis uda-fil er et bånd, som bliver oprettet på ny, skal du tjekke, hvor det bliver brugt. Brug det her endpoint i postman: https://medlem.coop.dk/umbraco/api/contentoverview/getjson?treshold=9999. Skift domæne ud med den løsning du sidder med.
+   - Tilføj authentication: djn0amp9uwr*GYV8pue til header.
+   - Søg i response efter fx båndets alias.
+   - Hvis det bliver brugt, så vil der være x antal url'er i ContentUrls. Find tilsvarende side i Umbraco 10 løsningen og slet båndet. OBS: Noter gerne ned, hvad du sletter. Da det skal tilføjes igen om lidt.
+   - Alle filer, som bliver oprettet på ny (og ikke er custom features), skal slettes i databasen (tabel: [dbo].[umbracoNode]). Søg dem frem på "uniqueId"
+   - Alt, som ikke er custom features skal discard'es
+   - Gå nu i backoffice og til Settings > Deploy. Tryk først på 'Clear Signatures' og dernæst 'Update Umbraco Schema'
+   - Nu skal indholdet, du slettede tidligere, oprettes igen. Tjek med Umbraco 7 content.
+8. Tjek at alt er som det skal være under Document Types, Data Types og at der er Content.
+9. Commit filerne og se at det hele er kommet op i Umbraco Cloud, når den er færdig med comitted
+10. Nu skal du transfer content fra local til live
    1. Højre klik på 'Content' og vælg 'Queue for transfer'
    2. Start overførelsen og hvis den fejler, så følg fejlbeskeden.
    3. Rinse and repeat
+11. Hvis der har været problemer med rod i uda-filer, så tag gerne en ny backup fra live og overskriv din lokale. Så skulle ghost filerne gerne være helt væk.
 
 ### Next step
 1. Flyt C# kode
