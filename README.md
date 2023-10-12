@@ -300,7 +300,7 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
    - Tilføj authentication: djn0amp9uwr*GYV8pue til header.
    - Søg i response efter fx båndets alias.
    - Hvis det bliver brugt, så vil der være x antal url'er i ContentUrls. Find tilsvarende side i Umbraco 10 løsningen og slet båndet. OBS: Noter gerne ned, hvad du sletter. Da det skal tilføjes igen om lidt.
-   - Alle filer, som bliver oprettet på ny (og ikke er custom features), skal slettes i databasen (tabel: [dbo].[umbracoNode]). Søg dem frem på "uniqueId"
+   - Hvis du har slettet noget indhold, så fjern nu også de dokumenttyper der har været brugt
    - Alt, som ikke er custom features skal discard'es
    - Gå nu i backoffice og til Settings > Deploy. Tryk først på 'Clear Signatures' og dernæst 'Update Umbraco Schema'
    - Nu skal indholdet, du slettede tidligere, oprettes igen. Tjek med Umbraco 7 content.
