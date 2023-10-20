@@ -44,7 +44,7 @@ namespace uSyncMigrationSite.UrlRedirect {
                 originalUrl = originalUrlSplit[0];
                 string originalQueryString = originalUrlSplit.Length > 1 ? originalUrlSplit[1] : "";
 
-                if ( originalUrl == newUrl || originalUrl == newUrl.Substring( 0, newUrl.Length - 1 ) ) {
+                if ( originalUrl == newUrl || originalUrl == newUrl.Substring( 0, newUrl.Length - 1 ) || string.IsNullOrEmpty( originalUrl ) || originalUrl == "//" ) {
                   continue;
                 }
 
