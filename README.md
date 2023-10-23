@@ -14,7 +14,6 @@
 Sørg for at du har:
 1. Adgang til Git projektet på https://github.com/umbracocoop/
 1. Adgang til Administratoradgang til Umbraco Cloud projektet på https://www.s1.umbraco.io/
-1. Du har installeret Visual Studio 2019
 1. Du har installeret Visual Studio 2022
 1. Du har installeret en SQLEXPRESS2019 (Skal bruges til de gamle Umbraco 7 databaser 🤷‍♂️)
 1. Du har installeret SSMS
@@ -52,7 +51,7 @@ Når vi kører eksporten, skal vi arbejde på en kopi af live databasen.
 
 1. Importer din bacpac filen med ”Import Data-tier Application”
    1. Navngiv databasen ”coop-[superbrugsen]-cloud”
-1. Åben nu solution’en i Visual Studio 2019
+1. Åben nu solution’en i Visual Studio
 1. Åben wwwroot > Web.Config
 1. Udkommenter linjen `<add name="umbracoDbDSN" connectionString="Data Source=|DataDirectory|\Umbraco.sdf;Flush Interval=1;" providerName="System.Data.SqlServerCe.4.0" />`
 1. Indsæt linjen og skift ud med dine egne oplysninger `<add name="umbracoDbDSN" connectionString="server=.\SQLEXPRESS19;database=coop-superbrugsen-cloud;user id=sa;password=itsteatime-" providerName="System.Data.SqlClient" />`
@@ -153,8 +152,10 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
    1. Domæne `import.coop.dk.localhost`
    1. Physical path skal pege ind i `\uSyncMigrationSite`
 1. Ret `\uSyncMigrationSite\Properties\launchSettings.json` til med ovenstående domæne to steder
+1. Højreklik først på uSyncMigrationSite og vælg "Set as Startup Project"
 1. Run `uSyncMigrationSite` projektet med `IIS` indstillingen
    1. Bemærk at du fra nu af bare kan køre domænet i browseren uden nødvendigvis at run’e den først.
+   1. Hvis Umbraco begynder at ville lave en opdateringen, så er det fordi at Umbraco versionen i migration projektet ikke stemmer overens med den versionen i databasen. Opdatér Umbraco versionen i migration projektet ved at opdatere Umbraco relaterede nuget pakker.
 1. Nu kommer du til Umbraco loginskærmbilledet. Log ind med:
    1. Email: admin@co3.dk (Eller hvilket login du tog)
    1. Password: 1234567890 (Eller hvilket password du tog)
@@ -163,7 +164,6 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 1. Ret login og password på din bruger til ovenstående
 1. Tag en ny backup af databasen
 1. Du er nu klar til næste del af opgaven
-
 
 ## Klargør import
 1. Kopier de eksporterede filer i `\Website\wwwroot\uSync\data` til `\uSyncMigrationSite\uSync\[super-brugsen]`
@@ -183,7 +183,7 @@ Nu har du ALT content og indstillinger, som du skal bruge, fra sitet.
 1. Start ny migration ved at trykke ”Select Source”
 1. Skriv ”[Super Brugsen]” i Migration name
 1. Vælg din `\uSyncMigrationSite\uSync\[super-brugsen]` mappe under uSync Source
-1. Skiv ‘uSync/Migrations/om-coop’ under ‘Target Location’
+1. Skiv ‘uSync/Migrations/[super-brugsen]’ under ‘Target Location’
 1. Tryk ”Submit”
 1. Nu kører den første tjek af og convertering af filerne og viser dig hvilke datatyper der mangler converters
    1. Bemærk at man senere kan køre en ny convertion ved at trykke ”Run conversion again” under en valgt migrering
@@ -333,19 +333,11 @@ Settings importerer DataTypes, ContentTypes, templates, Sprog, Domæner, MediaTy
 14. Upload billederne, og tjek at de er kommet op på (det nye) live. 
 
 ## Umbraco Forms
+Det er aftalt at Coop selv opretter forms i det nye Cloud projekt.
 
-VI FLYTTER DEM BARE MANUELT. Dette kan først gøres i selve Cloud projektet, så lav flueben til det i Clickup, så du kan gøre det senere.
-
-1. Opret den nye formular
-2. Umbraco cloud laver nu en .uda fil med formularen. Gem den fil et andet sted.
-3. Overskriv dens Guid, i .uda filen, med gamle guid
-4. Slet formularen i Umbraco
-5. Indsæt .uda filen igen
-6. Kør echo deploy
-
-> **Note**
-> 
-> **Uda filer** er Umbraco deploys måde at flytte Settings mellem environments. De committes til repo og bliver så automatisk importeret når de deployes til et nyt environment.
+1. Opret en placeholder formular i Umbraco Cloud projektet
+2. Vælg denne formular alle steder i content, hvor der er valgt en formular
+   1. Notér alle steder hvor placeholder formularen er valgt, så Coop på bagkant kan erstatte dem
 
 ## Custom tabeller
 ### Url Tracker
