@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Linq;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Web.Common;
 using Umbraco.Cms.Web.Common.Controllers;
-using Skybrud.Umbraco.Redirects;
 using Skybrud.Umbraco.Redirects.Services;
-using Umbraco.Forms.Core.Providers.WorkflowTypes;
 using Skybrud.Umbraco.Redirects.Models;
 
 namespace uSyncMigrationSite.UrlRedirect {
@@ -23,18 +19,19 @@ namespace uSyncMigrationSite.UrlRedirect {
 
     [HttpGet]
     public IActionResult Run() {
-      string rtnStr = "";
-
       string relativePath = _webHostEnvironment.ContentRootPath + "/UrlRedirect/ExportData";
       string folderPath = Path.GetFullPath( relativePath );
 
       string? file = Directory.GetFiles( folderPath )?.FirstOrDefault();
+
+      List<string> response = new() { "File:", file ?? "No file found", "Errors:" };
+
       if ( file != null ) {
         string[] lines = System.IO.File.ReadAllLines( file );
-        rtnStr = string.Join( "\n", lines );
+
         if ( lines.Length > 0 ) {
           foreach ( string line in lines ) {
-            string[] columns = line.Split( new char[] { ',' }, StringSplitOptions.TrimEntries );
+            string[] columns = line.Split( new char[] { ';' }, StringSplitOptions.TrimEntries );
             if ( columns.Length == 7 && Guid.TryParse( columns[3], out Guid contentId ) ) {
               IPublishedContent? content = _umbracoHelper.Content( contentId );
               if ( content != null ) {
@@ -64,7 +61,7 @@ namespace uSyncMigrationSite.UrlRedirect {
                       },
                     } );
                   } catch ( Exception ex ) {
-                    throw new Exception( "originalUrl: '" + originalUrl + "' - originalQueryString: '" + originalQueryString + "' - newUrl: '" + newUrl + "' - content.Id: " + content.Id, ex );
+                    response.Add( $"originalUrl: {originalUrl} - originalQueryString: {originalQueryString} - newUrl: {newUrl} - content.Id: {content.Id} exception: {ex.Message}" );
                   }
                 }
               }
@@ -73,7 +70,7 @@ namespace uSyncMigrationSite.UrlRedirect {
         }
       }
 
-      return Content( rtnStr );
+      return Content( string.Join( "\n", response ) );
     }
   }
 }
