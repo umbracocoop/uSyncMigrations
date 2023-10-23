@@ -450,3 +450,15 @@ Når dit nye projekt er koblet på din import-database kan du med Umbraco Deploy
      1. "Name": "Style - Ribbon Embed (har ikke noget alias), data-type__25100aa9695542df98fb1bcd7cf439c8.uda
 11. **Side**:
      1. Den skal ikke indeholde reference til 4d844d911c5d4c3d8fcec5eac1cc37ae
+
+# Transfer af media
+Det er ikke muligt at transfer media, hvis filen på disken har et meget langt navn. Dette resulterer i at der kastes en fejl under transfer. 
+
+1. Transfer giver navnet på filen, som der er problemer med.
+2. Find filen på disken og giv den et kortere navn.
+3. Stien skal nu opdateres i databasen:
+   1. SELECT *  FROM [coop-marketing-base-365].[dbo].[umbracoContentVersion] where nodeId = 2005
+   2. Snup id fra den rigtige version her, og brug det i de næste queries
+   3. SELECT * FROM [coop-marketing-base-365].[dbo].[umbracoMediaVersion] where id = 160
+   4. SELECT * FROM [coop-marketing-base-365].[dbo].[umbracoPropertyData] where versionId = 160	
+   5. Her skal stien rettes til den du har valgt	
