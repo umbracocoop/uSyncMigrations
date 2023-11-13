@@ -28,11 +28,11 @@ public class BlockMigrationPlan : ISyncMigrationPlan
         Source = "uSync/v9",
         Target = $"{uSyncMigrations.MigrationFolder}/{DateTime.Now:yyyyMMdd_HHmmss}",
         Handlers = _migrationHandlers.SelectGroup(8, string.Empty),
-        SourceVersion = 8,
-        PreferredMigrators = new Dictionary<string, string>
-        {
-            { UmbConstants.PropertyEditors.Aliases.NestedContent, nameof(NestedToBlockListMigrator) },
-            { UmbConstants.PropertyEditors.Aliases.Grid, nameof(GridToBlockGridMigrator) }
-        }
+        SourceVersion = 8
+        //PreferredMigrators = new Dictionary<string, string>
+        //{
+        //    { UmbConstants.PropertyEditors.Aliases.NestedContent, nameof(NestedToBlockListMigrator) },
+        //    { UmbConstants.PropertyEditors.Aliases.Grid, nameof(GridToBlockGridMigrator) }
+        //}
     };
 }
