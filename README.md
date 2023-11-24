@@ -359,6 +359,8 @@ Det er aftalt at Coop selv opretter forms i det nye Cloud projekt.
 4. Bemærk at næste step bare tager den første den bedste fil i mappen og forsøger at importere den.
 5. Kør nu `/umbraco/api/ImportUrlTrackerData/Run`, hvorefter url’erne bliver importeret.
 
+Det kan også gøres via baseline kode nu, så man kan importere i Cloud. Mappen hvor filen skal placeres er `/Website/UrlRedirect/ExportData`. Husk at fjerne 'just-for-git.txt' inden import, den er der kun for at mappen vil komme med i git.
+
 ### Vote options
 Tabellerne ` VoteOptions_Group` og ` VoteOptions_Vote` bliver oprettet automatisk i databasen af Migration-projektet. Du skal derfor bare kopiere data fra den gamle db, til den nye.
 
