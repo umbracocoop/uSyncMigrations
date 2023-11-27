@@ -4,8 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://import.coop.dk.localhost/",
-      "sslPort": 0
+      "applicationUrl": "http://import.coop.dk.localhost"
     },
     "iisExpress": {
       "applicationUrl": "http://localhost:42577",
@@ -16,7 +15,7 @@
     "IIS": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "http://import.coop.dk.localhost/",
+      "launchUrl": "http://import.coop.dk.localhost",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
